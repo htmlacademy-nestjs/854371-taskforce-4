@@ -1,7 +1,7 @@
 import { UserRole } from './user-role.enum';
 import { Cities } from './cities.type';
 
-export interface userInterface {
+export interface UserInterface {
   aboutMe: string;
   ageInYears: number;
   avatar: string;
