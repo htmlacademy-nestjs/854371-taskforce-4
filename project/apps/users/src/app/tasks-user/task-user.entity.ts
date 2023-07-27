@@ -1,5 +1,7 @@
 import { UserInterface, UserRole } from '@project/shared/app-types';
-import { Cities } from '../../../../../libs/shared/app-types/src/lib/user/cities.type';
+import { Cities } from '@project/shared/app-types';
+import { genSalt, hash, compare } from 'bcrypt';
+import { SALT_ROUNDS } from './task-user.constant';
 
 export default class TaskUserEntity implements UserInterface {
   public aboutMe: string;
@@ -58,5 +60,15 @@ export default class TaskUserEntity implements UserInterface {
     this.regDate = taskUser.regDate;
     this.role = taskUser.role;
     this.specialization = taskUser.specialization;
+  }
+
+  public async setPassword(password: string): Promise<TaskUserEntity> {
+    const salt = await genSalt(SALT_ROUNDS);
+    this.passwordHash = await hash(password, salt);
+    return this;
+  }
+
+  public async comparePassword(password: string): Promise<boolean> {
+    return await compare(password, this.passwordHash);
   }
 }
