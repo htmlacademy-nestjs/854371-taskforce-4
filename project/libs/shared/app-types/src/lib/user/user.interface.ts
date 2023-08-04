@@ -13,8 +13,9 @@ export interface UserInterface {
   name: string;
   passwordHash: string;
   rating: number;
-  ratingPosition: string;
+  ratingPosition: number;
   regDate: string;
   role: UserRole;
   specialization: string;
+  birthDay: Date;
 }

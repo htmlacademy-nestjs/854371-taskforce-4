@@ -33,4 +33,12 @@ export default class TaskUserMemoryRepository implements CRUDRepository<TaskUser
     }
     return null;
   }
+
+  public async findByEmail(email: string): Promise<UserInterface | null> {
+    const users = Object.values(this.repository);
+
+    const user = users.find((user) => user.email === email);
+
+    return user ?? null;
+  }
 };

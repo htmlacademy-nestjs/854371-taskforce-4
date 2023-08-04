@@ -15,10 +15,11 @@ export default class TaskUserEntity implements UserInterface {
   public name: string;
   public passwordHash: string;
   public rating: number;
-  public ratingPosition: string;
+  public ratingPosition: number;
   public regDate: string;
   public role: UserRole;
   public specialization: string;
+  public birthDay: Date;
 
   constructor(taskUser: UserInterface) {
     this.fillEntity(taskUser);
@@ -40,7 +41,8 @@ export default class TaskUserEntity implements UserInterface {
       ratingPosition: this.ratingPosition,
       regDate: this.regDate,
       role: this.role,
-      specialization: this.specialization
+      specialization: this.specialization,
+      birthDay: this.birthDay
     })
   }
 
@@ -60,6 +62,7 @@ export default class TaskUserEntity implements UserInterface {
     this.regDate = taskUser.regDate;
     this.role = taskUser.role;
     this.specialization = taskUser.specialization;
+    this.birthDay = taskUser.birthDay
   }
 
   public async setPassword(password: string): Promise<TaskUserEntity> {
