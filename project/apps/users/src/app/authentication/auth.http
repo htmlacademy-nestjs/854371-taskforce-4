@@ -1,0 +1,14 @@
+POST http://localhost:3000/api/auth/register
+Content-Type: application/json
+
+{
+  "name": "testNamw{{$random.integer(3)}}",
+  "email": "{{$random.alphabetic(5)}}@gmail.com",
+  "city": "Moscow",
+  "password": "123456",
+  "role": "customer",
+  "avatar": "{{$exampleServer}}/avatar/{{$random.alphanumeric(4)}}.jpg",
+  "birthDay": "{{$isoTimestamp}}"
+}
+
+###
