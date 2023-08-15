@@ -5,6 +5,7 @@ export interface UserInterface {
   aboutMe: string;
   ageInYears: number;
   avatar: string;
+  birthDay: Date;
   city: Cities;
   completedTasksCount: number;
   email: string;
@@ -17,5 +18,4 @@ export interface UserInterface {
   regDate: string;
   role: UserRole;
   specialization: string;
-  birthDay: Date;
 }
