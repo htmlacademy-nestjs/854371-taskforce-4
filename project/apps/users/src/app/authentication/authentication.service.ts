@@ -12,18 +12,18 @@ export class AuthenticationService {
   ) {}
 
   public async register(dto: CreateUserDto) {
-    const {name, email, city, password, role, avatar, birthDay} = dto;
+    const {name, email, city, password, role, avatar, birthDay, aboutMe, specialization} = dto;
 
     const existUser = await this.userRepository.findByEmail(email)
 
     if (existUser) {
-      throw new ConflictException(`User with email ${email} already exist`)
+      throw new ConflictException(`User with email ${email} already exist`);
     }
 
     const taskUser = {
-      name, email, city, role, avatar, birthDay: dayjs(birthDay).toDate(), aboutMe: '', passwordHash: '',
+      name, email, city, role, avatar, birthDay: dayjs(birthDay).toDate(), aboutMe: aboutMe ?? '', passwordHash: '',
       ageInYears: 0, completedTasksCount: 0, failedTasksCount: 0, rating: 0, ratingPosition: 0, regDate: dayjs().toISOString(),
-      specialization: ''
+      specialization: specialization ?? ''
     };
 
     const userEntity = await new TaskUserEntity(taskUser).setPassword(password)

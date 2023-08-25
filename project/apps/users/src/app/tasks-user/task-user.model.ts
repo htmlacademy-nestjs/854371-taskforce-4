@@ -7,9 +7,7 @@ import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
   timestamps: true,
 })
 export class TaskUserModel extends Document implements UserInterface {
-  @Prop({
-    required: true
-  })
+  @Prop()
   public aboutMe: string;
 
   @Prop({
@@ -82,9 +80,7 @@ export class TaskUserModel extends Document implements UserInterface {
   })
   public role: UserRole;
 
-  @Prop({
-    required: true
-  })
+  @Prop()
   public specialization: string;
 }
 

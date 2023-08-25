@@ -10,6 +10,18 @@ export default class CreateUserDto {
   public name: string;
 
   @ApiProperty({
+    description: 'User\'s description',
+    example: 'I\'m John, I\'m programmer',
+  })
+  public aboutMe: string;
+
+  @ApiProperty({
+    description: 'User\'s specialization',
+    example: 'programmer',
+  })
+  public specialization: string;
+
+  @ApiProperty({
     description: 'User unique address',
     example: 'john-doe@gmail.com',
     required: true
