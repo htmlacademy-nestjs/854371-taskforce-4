@@ -1,7 +1,11 @@
 import { Document } from 'mongoose';
 import { Cities, UserInterface, UserRole } from '@project/shared/app-types';
-import { Prop, SchemaFactory } from '@nestjs/mongoose';
+import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 
+@Schema({
+  collection: 'users',
+  timestamps: true,
+})
 export class TaskUserModel extends Document implements UserInterface {
   @Prop({
     required: true
