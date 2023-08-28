@@ -33,6 +33,7 @@
     "@nx/node": "16.5.1",
     "@nx/webpack": "16.5.1",
     "@nx/workspace": "16.5.1",
+    "@prisma/client": "5.2.0",
     "@types/bcrypt": "5.0.0",
     "@types/jest": "^29.4.0",
     "@types/node": "~18.7.1",
