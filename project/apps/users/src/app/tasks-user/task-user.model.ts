@@ -23,14 +23,14 @@ export class TaskUserModel extends Document implements UserInterface {
   @Prop({
     required: true
   })
-  public birthDay: Date
+  public birthDay: Date;
 
   @Prop({
     type: String,
     required: true,
     default: 'Moscow'
   })
-  public city: Cities
+  public city: Cities;
 
   @Prop({
     default: 0
@@ -55,22 +55,22 @@ export class TaskUserModel extends Document implements UserInterface {
   @Prop({
     required: true
   })
-  public passwordHash: string
+  public passwordHash: string;
 
   @Prop({
     required: true
   })
-  public rating: number
+  public rating: number;
 
   @Prop({
     default: 0
   })
-  public ratingPosition: number
+  public ratingPosition: number;
 
   @Prop({
     required: true
   })
-  public regDate: string
+  public regDate: string;
 
   @Prop({
     required: true,
@@ -84,4 +84,4 @@ export class TaskUserModel extends Document implements UserInterface {
   public specialization: string;
 }
 
-export const TaskUserSchema = SchemaFactory.createForClass(TaskUserModel)
+export const TaskUserSchema = SchemaFactory.createForClass(TaskUserModel);

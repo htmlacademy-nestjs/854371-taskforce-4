@@ -6,7 +6,7 @@ export class TaskSpaceCategoryEntity implements Entity<TaskSpaceCategoryEntity, 
   public title: string;
 
   constructor(category: CategoryInterface) {
-    this.fillEntity(category)
+    this.fillEntity(category);
   }
 
   public fillEntity(entity: CategoryInterface) {
@@ -15,6 +15,6 @@ export class TaskSpaceCategoryEntity implements Entity<TaskSpaceCategoryEntity, 
   }
 
   public toObject(): TaskSpaceCategoryEntity {
-    return {...this}
+    return {...this};
   }
 }

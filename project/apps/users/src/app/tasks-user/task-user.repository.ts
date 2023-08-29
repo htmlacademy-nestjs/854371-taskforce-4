@@ -11,25 +11,25 @@ export class TaskUserRepository implements CRUDRepository<TaskUserEntity, string
   ) {}
 
   async findById(id: string): Promise<UserInterface | null> {
-    return this.taskUserModel.findById(id)
+    return this.taskUserModel.findById(id);
   }
 
   async create(entity: TaskUserEntity): Promise<UserInterface> {
-    const newUser = new this.taskUserModel(entity)
+    const newUser = new this.taskUserModel(entity);
     return newUser.save();
   }
 
   async remove(id: string): Promise<void> {
-    this.taskUserModel.findByIdAndDelete(id)
+    this.taskUserModel.findByIdAndDelete(id);
   }
 
   async update(id: string, entity: TaskUserEntity): Promise<UserInterface> {
     return this.taskUserModel.findByIdAndUpdate(id, entity.toObject(), {new: true})
-      .exec()
+      .exec();
   }
 
   async findByEmail(email: string): Promise<UserInterface | null> {
     return this.taskUserModel.findOne({email})
-      .exec()
+      .exec();
   }
 }

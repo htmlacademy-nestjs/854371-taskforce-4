@@ -13,14 +13,14 @@ export default registerAs('application', (): ApplicationConfig => {
   const config: ApplicationConfig = {
     environment: process.env['NODE_ENV'] ?? '',
     port: parseInt(process.env['PORT'] || DEFAULT_PORT.toString(), 10),
-  }
+  };
 
   const validationSchema = Joi.object<ApplicationConfig>({
     environment: Joi.string().required().valid('development', 'production', 'stage'),
     port: Joi.number().port().default(DEFAULT_PORT)
-  })
+  });
 
-  const {error} = validationSchema.validate(config, {abortEarly: false})
+  const {error} = validationSchema.validate(config, {abortEarly: false});
 
   if (error) {
     throw new Error(
@@ -29,5 +29,5 @@ export default registerAs('application', (): ApplicationConfig => {
     );
   }
 
-  return config
-})
+  return config;
+});

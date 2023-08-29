@@ -40,7 +40,7 @@ export class AuthenticationController {
   @HttpCode(HttpStatus.OK)
   public async login(@Body() dto: LoginUserDto) {
     const loggedUser = await this.authService.verifyUser(dto);
-    return fillObject(LoggedUserRdo, loggedUser)
+    return fillObject(LoggedUserRdo, loggedUser);
   }
 
 
@@ -52,6 +52,6 @@ export class AuthenticationController {
   @Get(':id')
   public async getUserById(@Param('id') id: string) {
     const user = await this.authService.getUser(id);
-    return fillObject(UserRdo, user)
+    return fillObject(UserRdo, user);
   }
 }

@@ -42,6 +42,6 @@ export class TaskSpaceCategoryRepository implements CRUDRepository<TaskSpaceCate
           in: ids.length > 0 ? ids : undefined
         }
       }
-    })
+    });
   }
 }

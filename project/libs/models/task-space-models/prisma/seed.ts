@@ -43,11 +43,11 @@ async function fillDb() {
 
 fillDb()
   .then(async () => {
-    await prisma.$disconnect()
+    await prisma.$disconnect();
   })
   .catch(async (err) => {
     console.error(err);
-    await prisma.$disconnect()
+    await prisma.$disconnect();
 
     process.exit(1);
-  })
+  });
