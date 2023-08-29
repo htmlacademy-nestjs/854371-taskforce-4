@@ -2,9 +2,8 @@
  * Интерфейс для сущности
  * @template O Тип объекта, в который можно преобразовать сущность
  * @template P Тип параметра, который используется для заполнения сущности
- * @template R Тип результата, возвращаемого методом fillEntity
  */
-export interface Entity<O, P, R> {
+export interface Entity<O, P> {
   /**
    * Преобразует сущность в объект
    * @returns {O} Преобразованный объект
@@ -14,7 +13,6 @@ export interface Entity<O, P, R> {
   /**
    * Заполняет сущность данными
    * @param {P} entity Данные для заполнения сущности
-   * @returns {R} Результат заполнения
    */
-  fillEntity(entity: P): R;
+  fillEntity(entity: P): void;
 }
