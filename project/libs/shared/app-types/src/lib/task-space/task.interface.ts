@@ -1,6 +1,7 @@
 import { Cities } from '../user/cities.type';
 import { TagInterface } from './tag.interface';
 import { CategoryInterface } from './category.interface';
+import { CommentInterface } from './comment.interface';
 
 export interface TaskInterface {
   taskId?: number;
@@ -14,5 +15,5 @@ export interface TaskInterface {
   tags: TagInterface[];
   city: Cities
   userId?: string;
-  comments: string;
+  comments: CommentInterface[];
 }
