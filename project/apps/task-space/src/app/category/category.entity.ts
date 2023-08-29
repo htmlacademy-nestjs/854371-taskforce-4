@@ -1,7 +1,7 @@
 import { Entity } from '@project/util/util-types';
 import { CategoryInterface } from '@project/shared/app-types';
 
-export class TaskSpaceCategoryEntity implements Entity<TaskSpaceCategoryEntity, CategoryInterface>, CategoryInterface {
+export class CategoryEntity implements Entity<CategoryEntity, CategoryInterface>, CategoryInterface {
   public categoryId: number;
   public title: string;
 
@@ -14,7 +14,7 @@ export class TaskSpaceCategoryEntity implements Entity<TaskSpaceCategoryEntity, 
     this.title = entity.title;
   }
 
-  public toObject(): TaskSpaceCategoryEntity {
+  public toObject(): CategoryEntity {
     return {...this};
   }
 }
