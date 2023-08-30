@@ -1,5 +1,6 @@
 import { Entity } from '@project/util/util-types';
-import { CategoryInterface, Cities, CommentInterface, TagInterface, TaskInterface } from '@project/shared/app-types';
+import { CategoryInterface, CommentInterface, TagInterface, TaskInterface } from '@project/shared/app-types';
+import { City } from '@prisma/client';
 
 export class TaskEntity implements Entity<TaskEntity, TaskInterface>, TaskInterface {
   public title: string;
@@ -10,7 +11,7 @@ export class TaskEntity implements Entity<TaskEntity, TaskInterface>, TaskInterf
   public status: string;
   public category: CategoryInterface[];
   public tags: TagInterface[];
-  public city: Cities;
+  public city: City;
   public userId?: string;
   public comments: CommentInterface[];
 

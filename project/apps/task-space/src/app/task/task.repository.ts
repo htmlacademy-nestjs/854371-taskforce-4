@@ -32,15 +32,38 @@ export class TaskRepository implements CRUDRepository<TaskEntity, number, TaskIn
     });
   }
 
-  findById(id: number): Promise<TaskInterface | null> {
+  public async findById(id: number): Promise<TaskInterface | null> {
+    return this.prisma.task.findFirst({
+      where: {
+        taskId: id
+      },
+      include: {
+        comments: true,
+        category: true,
+        tags: true
+      }
+    });
+  }
+
+  public async remove(id: number): Promise<void> {
+    await this.prisma.task.delete({
+      where: {
+        taskId: id
+      }
+    });
+  }
+
+  public async update(_id: number, _entity: TaskEntity): Promise<TaskInterface> {
     return Promise.resolve(undefined);
   }
 
-  remove(id: number): Promise<void> {
-    return Promise.resolve(undefined);
-  }
-
-  update(id: number, entity: TaskEntity): Promise<TaskInterface> {
-    return Promise.resolve(undefined);
+  public async find(): Promise<TaskInterface[]> {
+    return this.prisma.task.findMany({
+      include: {
+        comments: true,
+        category: true,
+        tags: true
+      }
+    });
   }
 }
