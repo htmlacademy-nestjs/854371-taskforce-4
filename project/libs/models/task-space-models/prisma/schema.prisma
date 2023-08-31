@@ -1,0 +1,61 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../../../../node_modules/.prisma/client"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum City {
+  Moscow
+  SaintPetersburg
+  Vladivostok
+}
+
+model Task {
+  taskId      Int        @id @default(autoincrement()) @map("task_id")
+  title       String     @default("")
+  description String     @default("")
+  taskImage   String     @default("") @map("task_image")
+  createdAt   DateTime   @default(now()) @map("created_at")
+  publishAt   DateTime   @updatedAt @map("publish_at")
+  status      String     @default("New")
+  category    Category[]
+  tags        Tags[]
+  city        City       @default(Moscow)
+  userId      String?    @map("user_id")
+  comments    Comment[]
+}
+
+model Category {
+  categoryId Int    @id @default(autoincrement()) @map("category_id")
+  title      String
+  task       Task[]
+
+  @@map("category")
+}
+
+model Tags {
+  tagId Int    @id @default(autoincrement()) @map("tag_id")
+  title String
+  task  Task[]
+
+  @@map("tags")
+}
+
+model Comment {
+  commentId Int      @id @default(autoincrement()) @map("comment_id")
+  message   String
+  userId    String   @map("user_id")
+  task      Task     @relation(fields: [taskId], references: [taskId], onDelete: Cascade, onUpdate: Cascade)
+  taskId    Int      @map("post_id")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("comments")
+}

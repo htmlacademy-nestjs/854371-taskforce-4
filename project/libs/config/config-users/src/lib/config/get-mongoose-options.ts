@@ -14,8 +14,8 @@ export function getMongooseOptions(): MongooseModuleAsyncOptions {
           authDB: config.get<string>('db.authBase') ?? '',
           dbName: config.get<string>('db.name') ?? '',
         })
-      }
+      };
     },
     inject: [ConfigService]
-  }
+  };
 }

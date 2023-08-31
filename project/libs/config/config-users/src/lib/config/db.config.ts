@@ -21,7 +21,7 @@ export default registerAs('db', (): DbConfig => {
     user: process.env['MONGO_USER'] ?? '',
     password: process.env['MONGO_PASSWORD'] ?? '',
     authBase: process.env['MONGO_AUTH_BASE'] ?? '',
-  }
+  };
 
   const validationSchema = Joi.object<DbConfig>({
     host: Joi.string().hostname().required(),
@@ -30,14 +30,14 @@ export default registerAs('db', (): DbConfig => {
     user: Joi.string().required(),
     password: Joi.string().required(),
     authBase: Joi.string().required(),
-  })
+  });
 
-  const {error} = validationSchema.validate(config, {abortEarly: false})
+  const {error} = validationSchema.validate(config, {abortEarly: false});
 
   if (error) {
     throw new Error(`[DB Config]: Environments validation failed. Please check .env file.
-Error message: ${error.message}`,)
+Error message: ${error.message}`,);
   }
 
   return config;
-})
+});

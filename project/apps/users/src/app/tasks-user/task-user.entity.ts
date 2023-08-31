@@ -43,7 +43,7 @@ export default class TaskUserEntity implements UserInterface {
       role: this.role,
       specialization: this.specialization,
       birthDay: this.birthDay
-    })
+    });
   }
 
   public fillEntity(taskUser: UserInterface) {
@@ -62,7 +62,7 @@ export default class TaskUserEntity implements UserInterface {
     this.regDate = taskUser.regDate;
     this.role = taskUser.role;
     this.specialization = taskUser.specialization;
-    this.birthDay = taskUser.birthDay
+    this.birthDay = taskUser.birthDay;
   }
 
   public async setPassword(password: string): Promise<TaskUserEntity> {

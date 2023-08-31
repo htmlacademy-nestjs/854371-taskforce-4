@@ -1,4 +1,4 @@
-POST http://localhost:3000/api/auth/register
+POST http://localhost:3001/api/auth/register
 Content-Type: application/json
 
 {
@@ -8,7 +8,9 @@ Content-Type: application/json
   "password": "123456",
   "role": "customer",
   "avatar": "{{$exampleServer}}/avatar/{{$random.alphanumeric(4)}}.jpg",
-  "birthDay": "{{$isoTimestamp}}"
+  "birthDay": "{{$isoTimestamp}}",
+  "aboutMe": "{{$random.alphabetic(3)}} {{$random.alphabetic(5)}} {{$random.alphabetic(8)}}",
+  "specialization": "{{$random.alphabetic(10)}}"
 }
 
 ###

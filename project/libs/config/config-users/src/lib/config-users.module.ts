@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { appConfig, dbConfig } from '../index';
 
-const ENV_USERS_FILE_PATH = 'apps/users/users.env'
+const ENV_USERS_FILE_PATH = 'apps/users/users.env';
 
 @Module({
   imports: [

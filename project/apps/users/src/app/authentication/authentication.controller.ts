@@ -6,6 +6,7 @@ import UserRdo from './rdo/user.rdo';
 import LoginUserDto from './dto/login-user.dto';
 import { LoggedUserRdo } from './rdo/logged-user.rdo';
 import { ApiResponse, ApiTags } from '@nestjs/swagger';
+import { AuthenticationControllerMessages } from './authentication-controller-messages';
 
 @ApiTags('authentication')
 @Controller('auth')
@@ -18,7 +19,7 @@ export class AuthenticationController {
   @ApiResponse({
     type: UserRdo,
     status: HttpStatus.CREATED,
-    description: 'The new user has been successfully created'
+    description: AuthenticationControllerMessages.USER_CREATED
   })
   @Post('register')
   public async create(@Body() dto: CreateUserDto) {
@@ -29,17 +30,17 @@ export class AuthenticationController {
   @ApiResponse({
     type: LoggedUserRdo,
     status: HttpStatus.OK,
-    description: 'User has been successfully logged.'
+    description: AuthenticationControllerMessages.USER_LOGGED_IN
   })
   @ApiResponse({
     status: HttpStatus.UNAUTHORIZED,
-    description: 'Password or Login is wrong.',
+    description: AuthenticationControllerMessages.WRONG_PASSWORD_OR_LOGIN
   })
   @Post('login')
   @HttpCode(HttpStatus.OK)
   public async login(@Body() dto: LoginUserDto) {
     const loggedUser = await this.authService.verifyUser(dto);
-    return fillObject(LoggedUserRdo, loggedUser)
+    return fillObject(LoggedUserRdo, loggedUser);
   }
 
 
@@ -51,6 +52,6 @@ export class AuthenticationController {
   @Get(':id')
   public async getUserById(@Param('id') id: string) {
     const user = await this.authService.getUser(id);
-    return fillObject(UserRdo, user)
+    return fillObject(UserRdo, user);
   }
 }

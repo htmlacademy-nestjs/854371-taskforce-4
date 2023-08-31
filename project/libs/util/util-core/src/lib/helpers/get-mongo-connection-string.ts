@@ -8,7 +8,5 @@ interface MongoUriInterface {
 }
 
 export function getMongoConnectionString({username, password, host, port, dbName, authDB}: MongoUriInterface) {
-  const result  = `mongodb://${username}:${password}@${host}:${port}/${dbName}?authSource=${authDB}`
-  console.log(result)
-  return result;
+  return `mongodb://${username}:${password}@${host}:${port}/${dbName}?authSource=${authDB}`;
 }
