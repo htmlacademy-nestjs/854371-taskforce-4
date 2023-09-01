@@ -4,10 +4,12 @@ import { TaskUserModel, TaskUserSchema } from './task-user.model';
 import { TaskUserRepository } from './task-user.repository';
 
 @Module({
-  imports: [MongooseModule.forFeature([{
-    name: TaskUserModel.name, schema: TaskUserSchema}
-  ])],
-  providers: [TaskUserRepository],
-  exports: [TaskUserRepository]
+  imports: [ MongooseModule.forFeature([ {
+    name: TaskUserModel.name, schema: TaskUserSchema
+  }
+  ]) ],
+  providers: [ TaskUserRepository ],
+  exports: [ TaskUserRepository ]
 })
-export class TasksUserModule {}
+export class TasksUserModule {
+}

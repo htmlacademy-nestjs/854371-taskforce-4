@@ -11,14 +11,15 @@ export class TaskService {
   constructor(
     private readonly taskRepository: TaskRepository,
     private readonly categoryRepository: CategoryRepository
-  ) {}
+  ) {
+  }
 
   async createTask(task: CreateTaskDto): Promise<TaskInterface> {
     const categories = await this.categoryRepository.find();
     const taskData = new TaskEntity({
       ...task,
       comments: [],
-      category: [...categories]
+      category: [ ...categories ]
     });
     return this.taskRepository.create(taskData);
   }

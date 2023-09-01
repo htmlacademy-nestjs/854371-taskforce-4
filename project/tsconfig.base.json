@@ -10,23 +10,39 @@
     "importHelpers": true,
     "target": "es2015",
     "module": "esnext",
-    "lib": ["es2020", "dom"],
+    "lib": [
+      "es2020",
+      "dom"
+    ],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@project/config": ["libs/config/src/index.ts"],
+      "@project/config": [
+        "libs/config/src/index.ts"
+      ],
       "@project/config/config-uploader": [
         "libs/config/config-uploader/src/index.ts"
       ],
-      "@project/config/config-users": ["libs/config/config-users/src/index.ts"],
+      "@project/config/config-users": [
+        "libs/config/config-users/src/index.ts"
+      ],
       "@project/models/task-space-models": [
         "libs/models/task-space-models/src/index.ts"
       ],
-      "@project/shared/app-types": ["libs/shared/app-types/src/index.ts"],
-      "@project/util/util-core": ["libs/util/util-core/src/index.ts"],
-      "@project/util/util-types": ["libs/util/util-types/src/index.ts"]
+      "@project/shared/app-types": [
+        "libs/shared/app-types/src/index.ts"
+      ],
+      "@project/util/util-core": [
+        "libs/util/util-core/src/index.ts"
+      ],
+      "@project/util/util-types": [
+        "libs/util/util-types/src/index.ts"
+      ]
     }
   },
-  "exclude": ["node_modules", "tmp"]
+  "exclude": [
+    "node_modules",
+    "tmp"
+  ]
 }

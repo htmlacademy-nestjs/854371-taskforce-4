@@ -1,6 +1,5 @@
-import { UserInterface, UserRole } from '@project/shared/app-types';
-import { Cities } from '@project/shared/app-types';
-import { genSalt, hash, compare } from 'bcrypt';
+import { Cities, UserInterface, UserRole } from '@project/shared/app-types';
+import { compare, genSalt, hash } from 'bcrypt';
 import { SALT_ROUNDS } from './task-user.constant';
 
 export default class TaskUserEntity implements UserInterface {

@@ -4,8 +4,9 @@ import { AuthenticationService } from './authentication.service';
 import { TasksUserModule } from '../tasks-user/tasks-user.module';
 
 @Module({
-  controllers: [AuthenticationController],
-  providers: [AuthenticationService],
-  imports: [TasksUserModule]
+  controllers: [ AuthenticationController ],
+  providers: [ AuthenticationService ],
+  imports: [ TasksUserModule ]
 })
-export class AuthenticationModule {}
+export class AuthenticationModule {
+}

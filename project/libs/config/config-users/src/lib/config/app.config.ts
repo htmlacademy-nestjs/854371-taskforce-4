@@ -5,8 +5,8 @@ import * as Joi from 'joi';
 const DEFAULT_PORT = 3000;
 
 export interface ApplicationConfig {
-  environment: string
-  port: number
+  environment: string;
+  port: number;
 }
 
 export default registerAs('application', (): ApplicationConfig => {
@@ -20,7 +20,7 @@ export default registerAs('application', (): ApplicationConfig => {
     port: Joi.number().port().default(DEFAULT_PORT)
   });
 
-  const {error} = validationSchema.validate(config, {abortEarly: false});
+  const { error } = validationSchema.validate(config, { abortEarly: false });
 
   if (error) {
     throw new Error(

@@ -11,7 +11,7 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { ConfigService } from '@nestjs/config';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule, {snapshot: true});
+  const app = await NestFactory.create(AppModule, { snapshot: true });
 
   const config = new DocumentBuilder()
     .setTitle('The «Users» service')

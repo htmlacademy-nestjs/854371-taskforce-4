@@ -9,7 +9,7 @@ const ENV_FILE_PATH = 'apps/uploader/.env';
     ConfigModule.forRoot({
       cache: true,
       isGlobal: true,
-      load: [UploaderConfig],
+      load: [ UploaderConfig ],
       envFilePath: ENV_FILE_PATH
     })
   ],
@@ -17,4 +17,5 @@ const ENV_FILE_PATH = 'apps/uploader/.env';
   providers: [],
   exports: [],
 })
-export class ConfigUploaderModule {}
+export class ConfigUploaderModule {
+}

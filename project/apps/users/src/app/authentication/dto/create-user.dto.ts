@@ -30,7 +30,7 @@ export default class CreateUserDto {
 
   @ApiProperty({
     description: 'User\'s city',
-    enum: ['Moscow', 'Saint Petersburg', 'Vladivostok'],
+    enum: [ 'Moscow', 'Saint Petersburg', 'Vladivostok' ],
     required: true
   })
   public city: Cities;

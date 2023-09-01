@@ -7,12 +7,13 @@ import { TaskUserRepository } from '../tasks-user/task-user.repository';
 
 @Injectable()
 export class AuthenticationService {
-  constructor (
+  constructor(
     private readonly userRepository: TaskUserRepository
-  ) {}
+  ) {
+  }
 
   public async register(dto: CreateUserDto) {
-    const {name, email, city, password, role, avatar, birthDay, aboutMe, specialization} = dto;
+    const { name, email, city, password, role, avatar, birthDay, aboutMe, specialization } = dto;
 
     const existUser = await this.userRepository.findByEmail(email);
 
@@ -21,8 +22,20 @@ export class AuthenticationService {
     }
 
     const taskUser = {
-      name, email, city, role, avatar, birthDay: dayjs(birthDay).toDate(), aboutMe: aboutMe ?? '', passwordHash: '',
-      ageInYears: 0, completedTasksCount: 0, failedTasksCount: 0, rating: 0, ratingPosition: 0, regDate: dayjs().toISOString(),
+      name,
+      email,
+      city,
+      role,
+      avatar,
+      birthDay: dayjs(birthDay).toDate(),
+      aboutMe: aboutMe ?? '',
+      passwordHash: '',
+      ageInYears: 0,
+      completedTasksCount: 0,
+      failedTasksCount: 0,
+      rating: 0,
+      ratingPosition: 0,
+      regDate: dayjs().toISOString(),
       specialization: specialization ?? ''
     };
 
@@ -32,7 +45,7 @@ export class AuthenticationService {
   }
 
   public async verifyUser(dto: LoginUserDto) {
-    const {email, password} = dto;
+    const { email, password } = dto;
 
     const existUser = await this.userRepository.findByEmail(email);
 

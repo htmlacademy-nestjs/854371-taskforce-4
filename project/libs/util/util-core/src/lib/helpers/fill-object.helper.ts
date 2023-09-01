@@ -7,5 +7,5 @@ import { ClassConstructor, plainToInstance } from 'class-transformer';
  * @return Вернёт экземпляр указанного класса, заполненным данными из объекта `plainObject`
  */
 export function fillObject<Class, ObjectPlain>(someDto: ClassConstructor<Class>, plainObject: ObjectPlain) {
-  return plainToInstance(someDto, plainObject, {excludeExtraneousValues: true});
+  return plainToInstance(someDto, plainObject, { excludeExtraneousValues: true });
 }

@@ -9,7 +9,8 @@ import { UpdateTaskDto } from './dto/update-task.dto';
 export class TaskController {
   constructor(
     private readonly taskService: TaskService
-  ) {}
+  ) {
+  }
 
   @Get('/:id')
   async show(@Param('id') id: string) {

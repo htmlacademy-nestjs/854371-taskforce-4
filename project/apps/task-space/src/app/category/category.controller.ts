@@ -9,7 +9,8 @@ import { UpdateCategoryDto } from './dto/update-category.dto';
 export class CategoryController {
   constructor(
     private readonly categoryService: CategoryService
-  ) {}
+  ) {
+  }
 
   @Get('/:id')
   async show(@Param('id') id: string) {

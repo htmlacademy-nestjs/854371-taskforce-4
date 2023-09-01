@@ -26,8 +26,8 @@ export class TaskEntity implements Entity<TaskEntity, TaskInterface>, TaskInterf
     this.createdAt = new Date();
     this.publishAt = new Date();
     this.status = entity.status;
-    this.category = [...entity.category];
-    this.tags = [...entity.tags];
+    this.category = [ ...entity.category ];
+    this.tags = [ ...entity.tags ];
     this.city = entity.city;
     this.userId = entity.userId;
     this.comments = [];
@@ -36,9 +36,9 @@ export class TaskEntity implements Entity<TaskEntity, TaskInterface>, TaskInterf
   public toObject(): TaskEntity {
     return ({
       ...this,
-      tags: [...this.tags],
-      category: [...this.category],
-      comments: [...this.comments]
+      tags: [ ...this.tags ],
+      category: [ ...this.category ],
+      comments: [ ...this.comments ]
     });
   }
 }
