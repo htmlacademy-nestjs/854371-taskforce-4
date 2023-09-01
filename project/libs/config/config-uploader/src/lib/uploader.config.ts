@@ -26,10 +26,10 @@ export default registerAs('application', (): UploaderConfig => {
     db: {
       authBase: process.env['MONGO_AUTH_BASE'] ?? '',
       host: process.env['MONGO_HOST'] ?? '',
-      dbName: process.env['MONGO_NAME'] ?? '',
+      dbName: process.env['MONGO_DB'] ?? '',
       password: process.env['MONGO_PASSWORD'] ?? '',
       port: parseInt(process.env['MONGO_PORT'] || DEFAULT_MONGO_PORT.toString(), 10),
-      username: process.env['MONGO_USERNAME'] ?? ''
+      username: process.env['MONGO_USER'] ?? ''
     }
   };
 
