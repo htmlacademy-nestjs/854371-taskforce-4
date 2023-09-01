@@ -8,11 +8,12 @@ import 'multer';
 export class FileController {
   constructor(
     private readonly fileService: FileService
-  ) {}
+  ) {
+  }
 
   @Post('/upload')
   @UseInterceptors(FileInterceptor('file'))
   async uploadFile(@UploadedFile() file: Express.Multer.File) {
-    return this.fileService.writeFile(file);
+    const newFile = await this.fileService.save(file);
   }
 }
