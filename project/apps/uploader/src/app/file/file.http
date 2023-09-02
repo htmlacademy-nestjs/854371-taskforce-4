@@ -1,0 +1,10 @@
+### Загрузка файла
+POST http://localhost:3000/api/files/upload
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+
+--WebAppBoundary
+Content-Disposition: form-data; name="file"; filename="file.http"
+Content-Type: text/plain
+
+< file.http
+--WebAppBoundary--

@@ -8,6 +8,7 @@ import dayjs from 'dayjs';
 import { FileRepository } from './file.repository';
 import { FileEntity } from './file.entity';
 import { FileInterface } from '@project/shared/app-types';
+import * as crypto from 'crypto';
 
 type WritedFile = {
   hashName: string;

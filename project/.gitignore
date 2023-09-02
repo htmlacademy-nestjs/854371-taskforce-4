@@ -39,4 +39,4 @@ testem.log
 Thumbs.db
 
 *.env
-**/uploads/*
+/apps/uploader/upload/
