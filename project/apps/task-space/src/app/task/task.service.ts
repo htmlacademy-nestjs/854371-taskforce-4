@@ -15,11 +15,9 @@ export class TaskService {
   }
 
   async createTask(task: CreateTaskDto): Promise<TaskInterface> {
-    const categories = await this.categoryRepository.find();
     const taskData = new TaskEntity({
       ...task,
       comments: [],
-      category: [ ...categories ]
     });
     return this.taskRepository.create(taskData);
   }

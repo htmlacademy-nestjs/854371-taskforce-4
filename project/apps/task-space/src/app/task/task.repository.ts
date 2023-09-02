@@ -21,7 +21,9 @@ export class TaskRepository implements CRUDRepository<TaskEntity, number, TaskIn
           connect: entityData.tags.map(({ tagId }) => ({ tagId }))
         },
         category: {
-          connect: entityData.category.map(({ categoryId }) => ({ categoryId }))
+          connect: {
+            categoryId: entityData.category.categoryId
+          }
         }
       },
       include: {
