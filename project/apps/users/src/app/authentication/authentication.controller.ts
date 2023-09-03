@@ -7,6 +7,7 @@ import LoginUserDto from './dto/login-user.dto';
 import { LoggedUserRdo } from './rdo/logged-user.rdo';
 import { ApiResponse, ApiTags } from '@nestjs/swagger';
 import { AuthenticationControllerMessages } from './authentication-controller-messages';
+import { MongoIdValidationPipe } from '@project/shared/shared-pipes';
 
 @ApiTags('authentication')
 @Controller('auth')
@@ -50,7 +51,7 @@ export class AuthenticationController {
     description: 'User found'
   })
   @Get(':id')
-  public async getUserById(@Param('id') id: string) {
+  public async getUserById(@Param('id', MongoIdValidationPipe) id: string) {
     const user = await this.authService.getUser(id);
     return fillObject(UserRdo, user);
   }
