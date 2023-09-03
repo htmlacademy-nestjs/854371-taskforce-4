@@ -27,6 +27,7 @@
       "@project/shared/app-validation": [
         "libs/shared/app-validation/src/index.ts"
       ],
+      "@project/shared/shared-pipes": ["libs/shared/shared-pipes/src/index.ts"],
       "@project/shared/validate-messages": [
         "libs/shared/validate-messages/src/index.ts"
       ],
