@@ -6,3 +6,4 @@ export * from './lib/task-space/category.interface';
 export * from './lib/task-space/comment.interface';
 export * from './lib/task-space/tag.interface';
 export * from './lib/task-space/file.interface';
+export * from './lib/user/token-payload.interface';

@@ -4,11 +4,16 @@ import dayjs from 'dayjs';
 import TaskUserEntity from '../tasks-user/task-user.entity';
 import LoginUserDto from './dto/login-user.dto';
 import { TaskUserRepository } from '../tasks-user/task-user.repository';
+import { JwtService } from '@nestjs/jwt';
+import { TokenPayloadInterface, UserInterface } from '@project/shared/app-types';
+import { ConfigService } from '@nestjs/config';
 
 @Injectable()
 export class AuthenticationService {
   constructor(
-    private readonly userRepository: TaskUserRepository
+    private readonly userRepository: TaskUserRepository,
+    private readonly configService: ConfigService,
+    private readonly jwtService: JwtService
   ) {
   }
 
@@ -63,5 +68,18 @@ export class AuthenticationService {
 
   public async getUser(id: string) {
     return this.userRepository.findById(id);
+  }
+
+  public async createUserToken(user: UserInterface) {
+    const payload: TokenPayloadInterface = {
+      sub: user.id,
+      email: user.email,
+      role: user.role,
+      name: user.name
+    }
+
+    return {
+      access_token: this.jwtService.sign(payload),
+    };
   }
 }

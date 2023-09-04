@@ -1,6 +1,7 @@
 import { Document } from 'mongoose';
 import { Cities, UserInterface, UserRole } from '@project/shared/app-types';
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+import { City } from '@prisma/client';
 
 @Schema({
   collection: 'users',
@@ -30,7 +31,7 @@ export class TaskUserModel extends Document implements UserInterface {
     required: true,
     default: 'Moscow'
   })
-  public city: Cities;
+  public city: City;
 
   @Prop({
     default: 0
