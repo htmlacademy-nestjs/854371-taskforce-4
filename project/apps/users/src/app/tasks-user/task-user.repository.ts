@@ -8,7 +8,8 @@ import { Model } from 'mongoose';
 export class TaskUserRepository implements CRUDRepository<TaskUserEntity, string, UserInterface> {
   constructor(
     @InjectModel(TaskUserModel.name) private taskUserModel: Model<TaskUserModel>
-  ) {}
+  ) {
+  }
 
   async findById(id: string): Promise<UserInterface | null> {
     return this.taskUserModel.findById(id);
@@ -24,12 +25,12 @@ export class TaskUserRepository implements CRUDRepository<TaskUserEntity, string
   }
 
   async update(id: string, entity: TaskUserEntity): Promise<UserInterface> {
-    return this.taskUserModel.findByIdAndUpdate(id, entity.toObject(), {new: true})
+    return this.taskUserModel.findByIdAndUpdate(id, entity.toObject(), { new: true })
       .exec();
   }
 
   async findByEmail(email: string): Promise<UserInterface | null> {
-    return this.taskUserModel.findOne({email})
+    return this.taskUserModel.findOne({ email })
       .exec();
   }
 }

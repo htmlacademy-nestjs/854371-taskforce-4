@@ -7,8 +7,9 @@ import { CategoryModule } from './category/category.module';
 import { TaskModule } from './task/task.module';
 
 @Module({
-  imports: [PrismaModule, CategoryModule, TaskModule],
-  controllers: [AppController],
-  providers: [AppService],
+  imports: [ PrismaModule, CategoryModule, TaskModule ],
+  controllers: [ AppController ],
+  providers: [ AppService ],
 })
-export class AppModule {}
+export class AppModule {
+}

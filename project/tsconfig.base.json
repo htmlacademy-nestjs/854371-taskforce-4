@@ -16,11 +16,21 @@
     "baseUrl": ".",
     "paths": {
       "@project/config": ["libs/config/src/index.ts"],
+      "@project/config/config-uploader": [
+        "libs/config/config-uploader/src/index.ts"
+      ],
       "@project/config/config-users": ["libs/config/config-users/src/index.ts"],
       "@project/models/task-space-models": [
         "libs/models/task-space-models/src/index.ts"
       ],
       "@project/shared/app-types": ["libs/shared/app-types/src/index.ts"],
+      "@project/shared/app-validation": [
+        "libs/shared/app-validation/src/index.ts"
+      ],
+      "@project/shared/shared-pipes": ["libs/shared/shared-pipes/src/index.ts"],
+      "@project/shared/validate-messages": [
+        "libs/shared/validate-messages/src/index.ts"
+      ],
       "@project/util/util-core": ["libs/util/util-core/src/index.ts"],
       "@project/util/util-types": ["libs/util/util-types/src/index.ts"]
     }

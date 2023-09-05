@@ -9,7 +9,8 @@ import { UpdateCategoryDto } from './dto/update-category.dto';
 export class CategoryService {
   constructor(
     private readonly categoryRepository: CategoryRepository
-  ) {}
+  ) {
+  }
 
   async createCategory(category: CreateCategoryDto): Promise<CategoryInterface> {
     const categoryEntity = new CategoryEntity(category);

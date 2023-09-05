@@ -15,6 +15,6 @@ export class CategoryEntity implements Entity<CategoryEntity, CategoryInterface>
   }
 
   public toObject(): CategoryEntity {
-    return {...this};
+    return { ...this };
   }
 }

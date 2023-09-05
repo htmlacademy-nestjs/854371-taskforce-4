@@ -1,12 +1,13 @@
 import { UserRole } from './user-role.enum';
 import { Cities } from './cities.type';
+import { City } from '@prisma/client';
 
 export interface UserInterface {
   aboutMe: string;
   ageInYears: number;
   avatar: string;
   birthDay: Date;
-  city: Cities;
+  city: City;
   completedTasksCount: number;
   email: string;
   failedTasksCount: number;

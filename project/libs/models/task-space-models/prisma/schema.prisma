@@ -17,19 +17,31 @@ enum City {
   Vladivostok
 }
 
+enum Status {
+  New
+  Cancelled
+  InProgress
+  Completed
+  Failed
+}
+
 model Task {
-  taskId      Int        @id @default(autoincrement()) @map("task_id")
-  title       String     @default("")
-  description String     @default("")
-  taskImage   String     @default("") @map("task_image")
-  createdAt   DateTime   @default(now()) @map("created_at")
-  publishAt   DateTime   @updatedAt @map("publish_at")
-  status      String     @default("New")
-  category    Category[]
+  taskId      Int       @id @default(autoincrement()) @map("task_id")
+  title       String    @default("")
+  description String    @default("")
+  taskImage   String    @default("") @map("task_image")
+  createdAt   DateTime  @default(now()) @map("created_at")
+  publishAt   DateTime  @updatedAt @map("publish_at")
+  status      Status    @default(New)
+  category    Category  @relation(fields: [categoryId], references: [categoryId], onDelete: Cascade, onUpdate: Cascade)
+  categoryId  Int       @map("category_id")
   tags        Tags[]
-  city        City       @default(Moscow)
-  userId      String?    @map("user_id")
+  city        City      @default(Moscow)
+  userId      String?   @map("user_id")
   comments    Comment[]
+  coast       Int       @default(0)
+  dueDate     DateTime? @map("due_date")
+  review      review[]
 }
 
 model Category {
@@ -53,9 +65,22 @@ model Comment {
   message   String
   userId    String   @map("user_id")
   task      Task     @relation(fields: [taskId], references: [taskId], onDelete: Cascade, onUpdate: Cascade)
-  taskId    Int      @map("post_id")
+  taskId    Int      @map("task_id")
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
 
   @@map("comments")
+}
+
+model review {
+  reviewId   Int      @id @default(autoincrement()) @map("review_id")
+  rewiw_text String   @map("review_text")
+  userId     String?  @map("user_id")
+  createdAt  DateTime @default(now()) @map("created_at")
+  updatedAt  DateTime @updatedAt @map("updated_at")
+  taskId     Int      @map("task_id")
+  task       Task     @relation(fields: [taskId], references: [taskId], onDelete: Cascade, onUpdate: Cascade)
+  rate       Int
+
+  @@map("reviews")
 }

@@ -5,9 +5,10 @@ import { TaskRepository } from './task.repository';
 import { CategoryModule } from '../category/category.module';
 
 @Module({
-  imports: [CategoryModule],
-  controllers: [TaskController],
-  providers: [TaskService, TaskRepository],
-  exports: [TaskRepository]
+  imports: [ CategoryModule ],
+  controllers: [ TaskController ],
+  providers: [ TaskService, TaskRepository ],
+  exports: [ TaskRepository ]
 })
-export class TaskModule {}
+export class TaskModule {
+}

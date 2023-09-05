@@ -1,4 +1,4 @@
-import { Body, Controller, Get, HttpCode, HttpStatus, Param, Post } from '@nestjs/common';
+import { Body, Controller, Get, HttpCode, HttpStatus, Param, Post, UseGuards } from '@nestjs/common';
 import { AuthenticationService } from './authentication.service';
 import CreateUserDto from './dto/create-user.dto';
 import { fillObject } from '@project/util/util-core';
@@ -7,6 +7,8 @@ import LoginUserDto from './dto/login-user.dto';
 import { LoggedUserRdo } from './rdo/logged-user.rdo';
 import { ApiResponse, ApiTags } from '@nestjs/swagger';
 import { AuthenticationControllerMessages } from './authentication-controller-messages';
+import { MongoIdValidationPipe } from '@project/shared/shared-pipes';
+import { JwtAuthGuard } from './guards/jwt-auth.guard';
 
 @ApiTags('authentication')
 @Controller('auth')
@@ -39,8 +41,9 @@ export class AuthenticationController {
   @Post('login')
   @HttpCode(HttpStatus.OK)
   public async login(@Body() dto: LoginUserDto) {
-    const loggedUser = await this.authService.verifyUser(dto);
-    return fillObject(LoggedUserRdo, loggedUser);
+    const verifiedUser = await this.authService.verifyUser(dto);
+    const loggedUser = await this.authService.createUserToken(verifiedUser)
+    return fillObject(LoggedUserRdo, Object.assign(verifiedUser, loggedUser));
   }
 
 
@@ -49,8 +52,10 @@ export class AuthenticationController {
     status: HttpStatus.OK,
     description: 'User found'
   })
+
+  @UseGuards(JwtAuthGuard)
   @Get(':id')
-  public async getUserById(@Param('id') id: string) {
+  public async getUserById(@Param('id', MongoIdValidationPipe) id: string) {
     const user = await this.authService.getUser(id);
     return fillObject(UserRdo, user);
   }

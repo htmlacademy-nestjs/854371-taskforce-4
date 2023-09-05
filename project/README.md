@@ -1,4 +1,5 @@
-# TASKFORCE - 
+# TASKFORCE -
+
 биржа фриланса для заказчиков и исполнителей
 
 ## Описание
@@ -71,6 +72,8 @@ MONGO_USER=
 MONGO_PASSWORD=
 MONGO_AUTH_BASE=
 PORT=
+JWT_SECRET=
+JWT_EXPIRES_IN=
 ```
 
 Для `project/libs/models/task-space-models`:
@@ -110,3 +113,48 @@ DATABASE_URL=
    ```bash
    nx run task-space:db:seed
    ```
+
+* * *
+
+### Запуск uploader
+
+1.  **Сборка приложения**:
+
+```bssh
+nx run uploader:build:development
+```
+
+    или для продакшена:
+
+```bash
+nx run uploader:build:production
+```
+
+2.  **Запуск приложения**:
+
+```bssh
+nx run uploader:serve:development
+```
+
+    или для продакшена:
+
+```bssh
+nx run uploader:serve:production
+```
+
+
+### Переменные окружения для uploader
+
+Необходимо установить следующие переменные окружения:
+
+```dotenv
+UPLOAD_DIRECTORY_PATH=
+PORT=
+MONGO_DB=
+MONGO_HOST=
+MONGO_PORT=
+MONGO_USER=
+MONGO_PASSWORD=
+MONGO_AUTH_BASE=
+SERVE_ROOT=
+```

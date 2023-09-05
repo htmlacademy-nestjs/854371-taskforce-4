@@ -3,22 +3,20 @@ import { Injectable } from '@nestjs/common';
 import { CreateTaskDto } from './dto/create-task.dto';
 import { TaskInterface } from '@project/shared/app-types';
 import { TaskEntity } from './task.entity';
-import { CategoryRepository } from '../category/category.repository';
 import { UpdateTaskDto } from './dto/update-task.dto';
+import { TaskQuery } from './query/task.query';
 
 @Injectable()
 export class TaskService {
   constructor(
-    private readonly taskRepository: TaskRepository,
-    private readonly categoryRepository: CategoryRepository
-  ) {}
+    private readonly taskRepository: TaskRepository
+  ) {
+  }
 
   async createTask(task: CreateTaskDto): Promise<TaskInterface> {
-    const categories = await this.categoryRepository.find();
     const taskData = new TaskEntity({
       ...task,
       comments: [],
-      category: [...categories]
     });
     return this.taskRepository.create(taskData);
   }
@@ -31,8 +29,8 @@ export class TaskService {
     return this.taskRepository.findById(id);
   }
 
-  async getTasks(): Promise<TaskInterface[]> {
-    return this.taskRepository.find();
+  async getTasks(query: TaskQuery): Promise<TaskInterface[]> {
+    return this.taskRepository.find(query);
   }
 
   async updateTask(_id: number, _task: UpdateTaskDto): Promise<void> {

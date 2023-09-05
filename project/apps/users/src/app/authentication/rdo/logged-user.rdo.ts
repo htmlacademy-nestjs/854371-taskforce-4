@@ -21,5 +21,5 @@ export class LoggedUserRdo {
     example: 'g6yfhqkgxc8ytbq3jce2msdfxuy28heqszyjzvjjsintrwde36n5jxm57eoby7edw7ynhi53u63chqvzqyrq44dmjmrax8dqhsv6pkxh',
   })
   @Expose()
-  public accessToken: string; 
+  public accessToken: string;
 }

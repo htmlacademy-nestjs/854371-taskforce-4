@@ -16,6 +16,6 @@ export function getMongooseOptions(): MongooseModuleAsyncOptions {
         })
       };
     },
-    inject: [ConfigService]
+    inject: [ ConfigService ]
   };
 }

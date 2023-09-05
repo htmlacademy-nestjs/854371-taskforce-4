@@ -4,15 +4,21 @@ import dayjs from 'dayjs';
 import TaskUserEntity from '../tasks-user/task-user.entity';
 import LoginUserDto from './dto/login-user.dto';
 import { TaskUserRepository } from '../tasks-user/task-user.repository';
+import { JwtService } from '@nestjs/jwt';
+import { TokenPayloadInterface, UserInterface } from '@project/shared/app-types';
+import { ConfigService } from '@nestjs/config';
 
 @Injectable()
 export class AuthenticationService {
-  constructor (
-    private readonly userRepository: TaskUserRepository
-  ) {}
+  constructor(
+    private readonly userRepository: TaskUserRepository,
+    private readonly configService: ConfigService,
+    private readonly jwtService: JwtService
+  ) {
+  }
 
   public async register(dto: CreateUserDto) {
-    const {name, email, city, password, role, avatar, birthDay, aboutMe, specialization} = dto;
+    const { name, email, city, password, role, avatar, birthDay, aboutMe, specialization } = dto;
 
     const existUser = await this.userRepository.findByEmail(email);
 
@@ -21,8 +27,20 @@ export class AuthenticationService {
     }
 
     const taskUser = {
-      name, email, city, role, avatar, birthDay: dayjs(birthDay).toDate(), aboutMe: aboutMe ?? '', passwordHash: '',
-      ageInYears: 0, completedTasksCount: 0, failedTasksCount: 0, rating: 0, ratingPosition: 0, regDate: dayjs().toISOString(),
+      name,
+      email,
+      city,
+      role,
+      avatar,
+      birthDay: dayjs(birthDay).toDate(),
+      aboutMe: aboutMe ?? '',
+      passwordHash: '',
+      ageInYears: 0,
+      completedTasksCount: 0,
+      failedTasksCount: 0,
+      rating: 0,
+      ratingPosition: 0,
+      regDate: dayjs().toISOString(),
       specialization: specialization ?? ''
     };
 
@@ -32,7 +50,7 @@ export class AuthenticationService {
   }
 
   public async verifyUser(dto: LoginUserDto) {
-    const {email, password} = dto;
+    const { email, password } = dto;
 
     const existUser = await this.userRepository.findByEmail(email);
 
@@ -50,5 +68,18 @@ export class AuthenticationService {
 
   public async getUser(id: string) {
     return this.userRepository.findById(id);
+  }
+
+  public async createUserToken(user: UserInterface) {
+    const payload: TokenPayloadInterface = {
+      sub: user.id,
+      email: user.email,
+      role: user.role,
+      name: user.name
+    }
+
+    return {
+      access_token: this.jwtService.sign(payload),
+    };
   }
 }

@@ -1,13 +1,13 @@
-import { UserInterface, UserRole } from '@project/shared/app-types';
-import { Cities } from '@project/shared/app-types';
-import { genSalt, hash, compare } from 'bcrypt';
+import { Cities, UserInterface, UserRole } from '@project/shared/app-types';
+import { compare, genSalt, hash } from 'bcrypt';
 import { SALT_ROUNDS } from './task-user.constant';
+import { City } from '@prisma/client';
 
 export default class TaskUserEntity implements UserInterface {
   public aboutMe: string;
   public ageInYears: number;
   public avatar: string;
-  public city: Cities;
+  public city: City;
   public completedTasksCount: number;
   public email: string;
   public failedTasksCount: number;
