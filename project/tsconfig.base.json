@@ -20,6 +20,9 @@
         "libs/config/config-uploader/src/index.ts"
       ],
       "@project/config/config-users": ["libs/config/config-users/src/index.ts"],
+      "@project/config/notify-config": [
+        "libs/config/notify-config/src/index.ts"
+      ],
       "@project/models/task-space-models": [
         "libs/models/task-space-models/src/index.ts"
       ],
