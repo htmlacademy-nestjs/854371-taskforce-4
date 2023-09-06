@@ -9,3 +9,4 @@ export * from './lib/task-space/file.interface';
 export * from './lib/user/token-payload.interface';
 export * from './lib/common-consts'
 export * from './lib/notify/subscriber.interface';
+export * from './lib/notify/rabbit-routing.enum';
