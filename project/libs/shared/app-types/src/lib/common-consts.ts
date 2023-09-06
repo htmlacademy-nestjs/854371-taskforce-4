@@ -7,5 +7,6 @@ export const DefaultAppsPorts = {
 
 export const DefaultAnotherPorts = {
   MONGO: 27017,
-  RABBIT: 5672
+  RABBIT: 5672,
+  FAKE_SMTP: 25
 } as const;
