@@ -1,8 +1,9 @@
-import { TaskInterface } from '../task-space/task.interface';
+import { City } from '@prisma/client';
 
 export interface SubscriberInterface {
-  id?: string,
-  email: string,
-  name: string,
-  tasks: TaskInterface[]
+  userId: string;
+  title: string;
+  description: string;
+  city: City;
+  coast: number;
 }

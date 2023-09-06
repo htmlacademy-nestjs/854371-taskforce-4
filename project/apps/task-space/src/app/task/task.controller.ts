@@ -5,11 +5,13 @@ import { TaskRdo } from './rdo/task.rdo';
 import { CreateTaskDto } from './dto/create-task.dto';
 import { UpdateTaskDto } from './dto/update-task.dto';
 import { TaskQuery } from './query/task.query';
+import { NotifyService } from '../notify/notify.service';
 
 @Controller('tasks')
 export class TaskController {
   constructor(
-    private readonly taskService: TaskService
+    private readonly taskService: TaskService,
+    private readonly notifyService: NotifyService,
   ) {
   }
 
@@ -28,6 +30,14 @@ export class TaskController {
   @Post('/')
   async create(@Body() dto: CreateTaskDto) {
     const createdTask = this.taskService.createTask(dto);
+    const { userId, title, description, city, coast } = dto;
+    await this.notifyService.registerSubscriber({
+      userId,
+      title,
+      description,
+      city,
+      coast,
+    })
     return fillObject(TaskRdo, createdTask);
   }
 

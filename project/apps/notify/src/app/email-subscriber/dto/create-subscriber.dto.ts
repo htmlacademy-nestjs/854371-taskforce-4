@@ -1,16 +1,24 @@
-import { TaskInterface } from '@project/shared/app-types';
-import { IsEmail, IsNotEmpty, IsString } from 'class-validator';
-import { NotifyValidationMessages } from '@project/shared/app-validation';
+import { City } from '@prisma/client';
+import { IsEnum, IsNotEmpty, IsNumber, IsString } from 'class-validator';
 
 export class CreateSubscriberDto {
   @IsNotEmpty()
-  @IsEmail({}, { message: NotifyValidationMessages.EMAIL_NOT_VALID})
-  public email: string;
+  @IsString()
+  public userId: string
 
   @IsNotEmpty()
-  @IsString({message: NotifyValidationMessages.NAME_EMPTY_NOT_VALID})
-  public name: string;
+  @IsString()
+  public title: string
 
   @IsNotEmpty()
-  public tasks: TaskInterface[];
+  @IsString()
+  public description: string
+
+  @IsNotEmpty()
+  @IsEnum(City)
+  public city: City
+
+  @IsNotEmpty()
+  @IsNumber()
+  public coast: number
 }

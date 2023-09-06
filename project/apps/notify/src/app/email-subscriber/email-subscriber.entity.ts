@@ -1,27 +1,30 @@
 import { Entity } from '@project/util/util-types';
-import { SubscriberInterface, TaskInterface } from '@project/shared/app-types';
+import { SubscriberInterface } from '@project/shared/app-types';
+import { City } from '@prisma/client';
 
 export class EmailSubscriberEntity implements Entity<EmailSubscriberEntity, SubscriberInterface>, SubscriberInterface {
-  public id: string;
-  public email: string;
-  public name: string;
-  public tasks: TaskInterface[];
+  public userId: string;
+  public title: string;
+  public description: string;
+  public city: City;
+  public coast: number;
+
 
   constructor(entity: SubscriberInterface) {
     this.fillEntity(entity);
   }
 
   public fillEntity(entity: SubscriberInterface) {
-    this.id = entity.id;
-    this.email = entity.email;
-    this.name = entity.name;
-    this.tasks = [...entity.tasks];
+    this.userId = entity.userId;
+    this.title = entity.title;
+    this.description = entity.description;
+    this.city = entity.city;
+    this.coast = entity.coast;
   }
 
   public toObject(): EmailSubscriberEntity {
     return {
-      ...this,
-      tasks: [...this.tasks]
+      ...this
     }
 
   }

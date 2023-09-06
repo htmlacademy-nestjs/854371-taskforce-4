@@ -1,5 +1,6 @@
-import { SubscriberInterface, TaskInterface } from '@project/shared/app-types';
+import { SubscriberInterface } from '@project/shared/app-types';
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+import { City } from '@prisma/client';
 
 @Schema({
   collection: 'email-subscribers',
@@ -7,13 +8,19 @@ import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 })
 export class EmailSubscriberModel extends Document implements SubscriberInterface {
   @Prop()
-  public email: string;
+  public userId: string
 
   @Prop()
-  public name: string;
+  public title: string
 
   @Prop()
-  public tasks: TaskInterface[];
+  public description: string
+
+  @Prop()
+  public city: City
+
+  @Prop()
+  public coast: number
 }
 
 export const EmailSubscriberSchema = SchemaFactory.createForClass(EmailSubscriberModel);

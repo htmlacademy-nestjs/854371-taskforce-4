@@ -8,14 +8,7 @@ export class EmailSubscriberService {
   ) {}
 
   public async addSubscriber(subscriber: CreateSubscriberDto) {
-    const { email  } = subscriber;
-
-    const existsSubscriber = await this.emailSubscriberRepository.findByEmail(email);
-
-    if (existsSubscriber) {
-      return existsSubscriber;
-    }
-
+    // TODO Нужно имплементировать проверку существования записи
     return this.emailSubscriberRepository.create(new EmailSubscriberEntity(subscriber));
   }
 }
