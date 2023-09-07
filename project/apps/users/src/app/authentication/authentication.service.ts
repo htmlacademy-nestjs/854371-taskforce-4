@@ -1,4 +1,4 @@
-import { ConflictException, Injectable, NotFoundException, UnauthorizedException } from '@nestjs/common';
+import { ConflictException, Inject, Injectable, NotFoundException, UnauthorizedException } from '@nestjs/common';
 import CreateUserDto from './dto/create-user.dto';
 import dayjs from 'dayjs';
 import TaskUserEntity from '../tasks-user/task-user.entity';
@@ -6,14 +6,17 @@ import LoginUserDto from './dto/login-user.dto';
 import { TaskUserRepository } from '../tasks-user/task-user.repository';
 import { JwtService } from '@nestjs/jwt';
 import { TokenPayloadInterface, UserInterface } from '@project/shared/app-types';
-import { ConfigService } from '@nestjs/config';
+import { ConfigService, ConfigType } from '@nestjs/config';
+import { jwtConfig } from '@project/config/config-users';
+import { createJwtPayload } from '@project/util/util-core';
 
 @Injectable()
 export class AuthenticationService {
   constructor(
     private readonly userRepository: TaskUserRepository,
     private readonly configService: ConfigService,
-    private readonly jwtService: JwtService
+    private readonly jwtService: JwtService,
+    @Inject(jwtConfig.KEY) private readonly jwtOptions: ConfigType<typeof jwtConfig>
   ) {
   }
 
@@ -71,15 +74,14 @@ export class AuthenticationService {
   }
 
   public async createUserToken(user: UserInterface) {
-    const payload: TokenPayloadInterface = {
-      sub: user.id,
-      email: user.email,
-      role: user.role,
-      name: user.name
-    }
+    const payload: TokenPayloadInterface = createJwtPayload(user)
 
     return {
-      accessToken: this.jwtService.sign(payload),
+      accessToken: this.jwtService.signAsync(payload),
+      refreshToken: this.jwtService.signAsync(payload, {
+        secret: this.jwtOptions.refreshTokenSecret,
+        expiresIn: this.jwtOptions.refreshTokenExpiresIn
+      })
     };
   }
 }
