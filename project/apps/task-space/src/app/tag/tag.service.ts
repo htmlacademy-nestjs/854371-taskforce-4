@@ -2,6 +2,7 @@ import { TagRepository } from './tag-repository';
 import { CreateTagDto } from './dto/create-tag.dto';
 import { TagEntity } from './tag.entity';
 import { Injectable } from '@nestjs/common';
+import { UpdateTagDto } from './dto/update-tag.dto';
 
 @Injectable()
 export class TagService {
@@ -18,7 +19,7 @@ export class TagService {
     return this.tagRepository.remove(id);
   }
 
-  async updateTag(id: number, tag: CreateTagDto) {
+  async updateTag(id: number, tag: UpdateTagDto) {
     return this.tagRepository.update(id, new TagEntity(tag));
   }
 

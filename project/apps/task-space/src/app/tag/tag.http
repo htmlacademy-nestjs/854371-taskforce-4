@@ -1,6 +1,17 @@
-POST http://localhost:3000/api/tags
+POST http://localhost:3003/api/tags
 Content-Type: application/json
 
 {
-    "title": "test"
+  "title": "supertag2"
 }
+
+###
+PATCH http://localhost:3003/api/tags/1
+Content-Type: application/json
+
+{
+  "title": "update1"
+}
+
+###
+DELETE http://localhost:3003/api/tags/1

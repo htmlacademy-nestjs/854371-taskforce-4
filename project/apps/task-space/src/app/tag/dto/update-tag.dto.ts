@@ -1,4 +1,4 @@
-import { ArrayMaxSize, IsNotEmpty, IsNumber, IsString, Matches, MaxLength, Min, MinLength } from 'class-validator';
+import { IsString, Matches, MaxLength, MinLength } from 'class-validator';
 import { TagMessages, TagParameters } from '@project/shared/app-validation';
 
 export class UpdateTagDto {
@@ -13,11 +13,4 @@ export class UpdateTagDto {
     message: TagMessages.TAG_TITLE_REGULAR_EXPRESSION_CHECK_NOT_VALID,
   })
   title: string;
-
-  @IsNumber()
-  @IsNotEmpty()
-  @Min(TagParameters.TAG_ID_MIN, {
-    message: TagMessages.TAG_IS_NOT_VALID,
-  })
-  tagId: number;
 }
