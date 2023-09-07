@@ -13,9 +13,8 @@ export class CategoryController {
   }
 
   @Get('/:id')
-  async show(@Param('id') id: string) {
-    const numberId = parseInt(id, 10);
-    const existCategory = await this.categoryService.getCategory(numberId);
+  async show(@Param('id') id: number) {
+    const existCategory = await this.categoryService.getCategory(id);
     return fillObject(CategoryRdo, existCategory);
   }
 
@@ -33,15 +32,13 @@ export class CategoryController {
 
   @Delete('/:id')
   @HttpCode(HttpStatus.NO_CONTENT)
-  async delete(@Param('id') id: string) {
-    const numberId = parseInt(id, 10);
-    await this.categoryService.deleteCategory(numberId);
+  async delete(@Param('id') id: number) {
+    await this.categoryService.deleteCategory(id);
   }
 
   @Patch('/:id')
-  async update(@Param('id') id: string, @Body() category: UpdateCategoryDto) {
-    const numberId = parseInt(id, 10);
-    const updatedCategory = await this.categoryService.updateCategory(numberId, category);
+  async update(@Param('id') id: number, @Body() category: UpdateCategoryDto) {
+    const updatedCategory = await this.categoryService.updateCategory(id, category);
     return fillObject(CategoryRdo, updatedCategory);
   }
 }
