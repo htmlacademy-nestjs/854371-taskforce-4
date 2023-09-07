@@ -3,6 +3,4 @@ export interface CommentInterface {
   message: string;
   userId?: string;
   taskId: number;
-  createdAt: Date;
-  updatedAt: Date;
 }
