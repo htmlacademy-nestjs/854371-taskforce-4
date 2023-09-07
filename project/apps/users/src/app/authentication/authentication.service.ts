@@ -9,6 +9,7 @@ import { TokenPayloadInterface, UserInterface } from '@project/shared/app-types'
 import { ConfigService, ConfigType } from '@nestjs/config';
 import { jwtConfig } from '@project/config/config-users';
 import { createJwtPayload } from '@project/util/util-core';
+import { RefreshTokenService } from '../refresh-token/refresh-token.service';
 
 @Injectable()
 export class AuthenticationService {
@@ -16,7 +17,8 @@ export class AuthenticationService {
     private readonly userRepository: TaskUserRepository,
     private readonly configService: ConfigService,
     private readonly jwtService: JwtService,
-    @Inject(jwtConfig.KEY) private readonly jwtOptions: ConfigType<typeof jwtConfig>
+    @Inject(jwtConfig.KEY) private readonly jwtOptions: ConfigType<typeof jwtConfig>,
+    private readonly refreshTokenService: RefreshTokenService,
   ) {
   }
 
@@ -75,10 +77,13 @@ export class AuthenticationService {
 
   public async createUserToken(user: UserInterface) {
     const payload: TokenPayloadInterface = createJwtPayload(user)
+    const refreshTokenPayload = { ...payload, tokenId: crypto.randomUUID() }
+
+    await this.refreshTokenService.createRefreshSession(refreshTokenPayload)
 
     return {
       accessToken: this.jwtService.signAsync(payload),
-      refreshToken: this.jwtService.signAsync(payload, {
+      refreshToken: this.jwtService.signAsync(refreshTokenPayload, {
         secret: this.jwtOptions.refreshTokenSecret,
         expiresIn: this.jwtOptions.refreshTokenExpiresIn
       })

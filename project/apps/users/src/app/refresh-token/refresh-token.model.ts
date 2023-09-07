@@ -1,5 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { TokenInterface } from '@project/shared/app-types';
+import { Document } from 'mongoose';
 
 @Schema({
   collection: 'refresh-sessions',
