@@ -42,4 +42,14 @@ export class TagRepository implements CRUDRepository<TagEntity, number, TagInter
         { title: tagName }
     })
   }
+
+  async findByIds(ids: number[]): Promise<TagInterface[]> {
+    return this.prisma.tags.findMany({
+      where: {
+        tagId: {
+          in: ids
+        }
+      }
+    })
+  }
 }

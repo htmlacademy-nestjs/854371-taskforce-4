@@ -28,7 +28,6 @@ export class TaskController {
   @Post('/')
   async create(@Body() dto: CreateTaskDto) {
     const createdTask = this.taskService.createTask(dto);
-    const { userId, title, description, city, coast } = dto;
     return fillObject(TaskRdo, createdTask);
   }
 

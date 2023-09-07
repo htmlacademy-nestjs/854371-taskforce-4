@@ -30,4 +30,8 @@ export class TagService {
   async getTagByName(tagName: string) {
     return this.tagRepository.findByTagName(tagName);
   }
+
+  async getTagsByIds(ids: number[]) {
+    return this.tagRepository.findByIds(ids);
+  }
 }

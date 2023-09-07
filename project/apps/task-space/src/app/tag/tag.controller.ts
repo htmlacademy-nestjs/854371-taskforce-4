@@ -1,5 +1,5 @@
 import { TagService } from './tag.service';
-import { Body, Controller, Delete, Get, Param, Patch, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Patch, Post, Query } from '@nestjs/common';
 import { CreateTagDto } from './dto/create-tag.dto';
 import { TagRdo } from './rdo/tag.rdo';
 import { fillObject } from '@project/util/util-core';
@@ -30,6 +30,14 @@ export class TagController {
     }
 
     return fillObject(TagRdo, existTag);
+  }
+
+  @Get('/')
+  async showMany(@Query('ids') query: string) {
+    const ids = query.split(',').map((id) => parseInt(id, 10));
+    const existTags = await this.tagService.getTagsByIds(ids);
+
+    return fillObject(TagRdo, existTags);
   }
 
   @Delete('/:id')
