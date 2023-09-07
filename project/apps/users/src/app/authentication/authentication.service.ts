@@ -79,7 +79,7 @@ export class AuthenticationService {
     }
 
     return {
-      access_token: this.jwtService.sign(payload),
+      accessToken: this.jwtService.sign(payload),
     };
   }
 }
