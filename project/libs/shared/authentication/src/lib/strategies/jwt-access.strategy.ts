@@ -17,6 +17,7 @@ export class JwtAccessStrategy extends PassportStrategy(Strategy) {
   }
 
   public async validate(payload: TokenPayloadInterface) {
+    console.log(this.configService.get<string>('jwt.secret'), JSON.stringify(payload))
     return payload;
   }
 }

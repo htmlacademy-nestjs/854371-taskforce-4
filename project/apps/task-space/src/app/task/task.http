@@ -1,0 +1,39 @@
+POST http://localhost:3000/api/tasks
+Content-Type: application/json
+
+{
+  "title": "Task 1",
+  "description": "{{$random.alphabetic(100)}}",
+  "status": "New",
+  "taskImage": "https://via.placeholder.com/150.png",
+  "category": {
+    "categoryId": 4,
+    "title": "Category 1"
+  },
+  "tags": [
+  {
+  "tagId": 1,
+  "title": "Tag 1"
+  }
+  ],
+  "city": "Moscow",
+  "userId": "1",
+  "coast": 10000,
+  "dueDate": "2023-11-01"
+}
+
+###
+POST http://localhost:3000/api/tags
+Content-Type: application/json
+
+{
+  "title": "Tag 1"
+}
+
+###
+POST http://localhost:3000/api/categories
+Content-Type: application/json
+
+{
+  "title": "Category 1"
+}

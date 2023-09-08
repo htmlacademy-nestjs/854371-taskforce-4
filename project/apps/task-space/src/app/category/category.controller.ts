@@ -25,7 +25,7 @@ export class CategoryController {
   }
 
   @Post('/')
-  async create(category: CreateCategoryDto) {
+  async create(@Body() category: CreateCategoryDto) {
     const newCategory = await this.categoryService.createCategory(category);
     return fillObject(CategoryRdo, newCategory);
   }

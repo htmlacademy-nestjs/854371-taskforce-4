@@ -10,6 +10,7 @@ import { ConfigService, ConfigType } from '@nestjs/config';
 import { jwtConfig } from '@project/config/config-users';
 import { createJwtPayload } from '@project/util/util-core';
 import { RefreshTokenService } from '../refresh-token/refresh-token.service';
+import * as crypto from 'node:crypto';
 
 @Injectable()
 export class AuthenticationService {
@@ -82,8 +83,8 @@ export class AuthenticationService {
     await this.refreshTokenService.createRefreshSession(refreshTokenPayload)
 
     return {
-      accessToken: this.jwtService.signAsync(payload),
-      refreshToken: this.jwtService.signAsync(refreshTokenPayload, {
+      accessToken: await this.jwtService.signAsync(payload),
+      refreshToken: await this.jwtService.signAsync(refreshTokenPayload, {
         secret: this.jwtOptions.refreshTokenSecret,
         expiresIn: this.jwtOptions.refreshTokenExpiresIn
       })

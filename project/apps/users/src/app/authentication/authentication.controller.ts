@@ -1,4 +1,4 @@
-import { Body, Controller, Get, HttpCode, HttpStatus, Param, Post, Req, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, HttpCode, HttpStatus, Post, Req, UseGuards } from '@nestjs/common';
 import { AuthenticationService } from './authentication.service';
 import CreateUserDto from './dto/create-user.dto';
 import { fillObject } from '@project/util/util-core';
@@ -6,11 +6,11 @@ import UserRdo from './rdo/user.rdo';
 import { LoggedUserRdo } from './rdo/logged-user.rdo';
 import { ApiResponse, ApiTags } from '@nestjs/swagger';
 import { AuthenticationControllerMessages } from './authentication-controller-messages';
-import { MongoIdValidationPipe } from '@project/shared/shared-pipes';
-import { JwtAuthGuard } from './guards/jwt-auth.guard';
 import { LocalAuthGuard } from './guards/local-auth.guard';
 import { RequestWithUser } from '@project/shared/app-types';
 import { JwtRefreshGuard } from './guards/jwt-refresh.guard';
+import { JwtAuthGuard } from '@project/shared/authentication';
+import { RequestWithPayload } from '../../../../../libs/shared/app-types/src/lib/user/request-with-payload';
 
 @ApiTags('authentication')
 @Controller('auth')
@@ -54,10 +54,11 @@ export class AuthenticationController {
     description: 'User found'
   })
   @UseGuards(JwtAuthGuard)
-  @Get(':id')
-  public async getUserById(@Param('id', MongoIdValidationPipe) id: string) {
-    const user = await this.authService.getUser(id);
-    return fillObject(UserRdo, user);
+  @Get('/me')
+  public async getUserById(@Req() { user }: RequestWithPayload) {
+    const id = user.sub;
+    const userExist = await this.authService.getUser(id);
+    return fillObject(UserRdo, userExist);
   }
 
   @UseGuards(JwtRefreshGuard)
