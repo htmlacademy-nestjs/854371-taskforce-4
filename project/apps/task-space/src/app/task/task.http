@@ -1,5 +1,6 @@
 POST http://localhost:3000/api/tasks
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NGY5ZjlmMWIzZDlmNzRkNDM5ZmRlOWUiLCJlbWFpbCI6InFRT05ZQGdtYWlsLmNvbSIsInJvbGUiOiJjdXN0b21lciIsIm5hbWUiOiJ0ZXN0TmFtdzAiLCJpYXQiOjE2OTQxNjg1NTEsImV4cCI6MTY5NDI1NDk1MX0.FpEQlxv7tV2_sS9mF7vZb1ens5IAQjHBsBUpqepbCco
 
 {
   "title": "Task 1",

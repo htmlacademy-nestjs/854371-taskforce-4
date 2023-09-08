@@ -23,6 +23,7 @@
       "@project/config/notify-config": [
         "libs/config/notify-config/src/index.ts"
       ],
+      "@project/config/task-config": ["libs/config/task-config/src/index.ts"],
       "@project/models/task-space-models": [
         "libs/models/task-space-models/src/index.ts"
       ],

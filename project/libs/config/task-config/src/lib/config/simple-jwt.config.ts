@@ -6,7 +6,7 @@ export interface JwtConfig {
   expiresIn: string;
 }
 
-export default registerAs('jwt', (): JwtConfig => {
+export default registerAs('simple-jwt', (): JwtConfig => {
   const config: JwtConfig = {
     secret: process.env['JWT_SECRET'] ?? '',
     expiresIn: process.env['JWT_EXPIRES_IN'] ?? '',
@@ -21,7 +21,7 @@ export default registerAs('jwt', (): JwtConfig => {
 
   if (error) {
     throw new Error(
-      `[JWT Config]: Environments validation failed. Please check .env file.
+      `[SIMPLE JWT Config]: Environments validation failed. Please check .env file.
       Error message: ${error.message}`,
     );
   }
