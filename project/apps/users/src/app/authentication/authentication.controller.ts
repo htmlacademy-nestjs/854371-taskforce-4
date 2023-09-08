@@ -7,10 +7,9 @@ import { LoggedUserRdo } from './rdo/logged-user.rdo';
 import { ApiResponse, ApiTags } from '@nestjs/swagger';
 import { AuthenticationControllerMessages } from './authentication-controller-messages';
 import { LocalAuthGuard } from './guards/local-auth.guard';
-import { RequestWithUser } from '@project/shared/app-types';
+import { RequestWithPayload, RequestWithUser } from '@project/shared/app-types';
 import { JwtRefreshGuard } from './guards/jwt-refresh.guard';
 import { JwtAuthGuard } from '@project/shared/authentication';
-import { RequestWithPayload } from '../../../../../libs/shared/app-types/src/lib/user/request-with-payload';
 
 @ApiTags('authentication')
 @Controller('auth')

@@ -13,3 +13,4 @@ export * from './lib/notify/rabbit-routing.enum';
 export * from './lib/user/request-with.user'
 export * from './lib/user/token.interface';
 export * from './lib/user/refresh-token-payload.interface';
+export * from './lib/user/request-with-payload'

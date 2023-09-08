@@ -42,10 +42,6 @@ export class CreateTaskDto {
   @IsNotEmpty()
   public city: City;
 
-  @IsString()
-  @IsNotEmpty()
-  public userId: string;
-
   @IsISO8601()
   public dueDate: string;
 
