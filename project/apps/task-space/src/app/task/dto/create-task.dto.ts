@@ -1,5 +1,5 @@
 import { CategoryInterface, TagInterface } from '@project/shared/app-types';
-import { City, Status } from '@prisma/client';
+import { City } from '@prisma/client';
 import {
   IsArray,
   IsEnum,
@@ -23,11 +23,6 @@ export class CreateTaskDto {
   @MinLength(TaskDescription.MIN_LENGTH, { message: TaskSpaceMessages.TASK_DESCRIPTION_MIN_LENGTH_NOT_VALID })
   @MaxLength(TaskDescription.MAX_LENGTH, { message: TaskSpaceMessages.TASK_DESCRIPTION_MAX_LENGTH_NOT_VALID })
   public description: string;
-
-  @IsString()
-  @IsNotEmpty()
-  @IsEnum(Status)
-  public status: Status;
 
   @IsString()
   public taskImage: string;

@@ -1,5 +1,5 @@
 import { CategoryInterface, TagInterface } from '@project/shared/app-types';
-import { City, Status } from '@prisma/client';
+import { City } from '@prisma/client';
 import { IsArray, IsEnum, IsISO8601, IsNotEmpty, IsNumber, IsString, MaxLength, MinLength } from 'class-validator';
 import { TaskDescription, TaskSpaceMessages, TaskTitle } from '@project/shared/app-validation';
 
@@ -16,10 +16,6 @@ export class UpdateTaskDto {
 
   @IsString()
   public taskImage?: string;
-
-  @IsString()
-  @IsEnum(Status)
-  public status?: string;
 
   @IsNotEmpty()
   public category?: CategoryInterface;

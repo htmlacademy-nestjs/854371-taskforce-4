@@ -26,23 +26,23 @@ enum Status {
 }
 
 model Task {
-  taskId           Int       @id @default(autoincrement()) @map("task_id")
-  title            String    @default("")
-  description      String    @default("")
-  taskImage        String    @default("") @map("task_image")
-  createdAt        DateTime  @default(now()) @map("created_at")
-  publishAt        DateTime  @updatedAt @map("publish_at")
-  status           Status    @default(New)
-  category         Category  @relation(fields: [categoryId], references: [categoryId], onDelete: Cascade, onUpdate: Cascade)
-  categoryId       Int       @map("category_id")
-  tags             Tags[]
-  city             City      @default(Moscow)
-  userId           String?   @map("user_id")
-  comments         Comment[]
-  coast            Int       @default(0)
-  dueDate          DateTime? @map("due_date")
-  respondingExecutors         String[]  @default([])
-  selectedExecutor String?   @default("") @map("selected_executor")
+  taskId              Int       @id @default(autoincrement()) @map("task_id")
+  title               String    @default("")
+  description         String    @default("")
+  taskImage           String    @default("") @map("task_image")
+  createdAt           DateTime  @default(now()) @map("created_at")
+  publishAt           DateTime  @updatedAt @map("publish_at")
+  status              Status    @default(New)
+  category            Category  @relation(fields: [categoryId], references: [categoryId], onDelete: Cascade, onUpdate: Cascade)
+  categoryId          Int       @map("category_id")
+  tags                Tags[]
+  city                City      @default(Moscow)
+  userId              String?   @map("user_id")
+  comments            Comment[]
+  coast               Int       @default(0)
+  dueDate             DateTime? @map("due_date")
+  respondingExecutors String[]  @default([])
+  selectedExecutor    String?   @default("") @map("selected_executor")
 }
 
 model Category {

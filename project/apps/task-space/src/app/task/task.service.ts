@@ -5,6 +5,7 @@ import { TaskInterface } from '@project/shared/app-types';
 import { TaskEntity } from './task.entity';
 import { UpdateTaskDto } from './dto/update-task.dto';
 import { TaskQuery } from './query/task.query';
+import { Status } from '@prisma/client';
 
 @Injectable()
 export class TaskService {
@@ -16,6 +17,7 @@ export class TaskService {
   async createTask(task: CreateTaskDto): Promise<TaskInterface> {
     const taskData = new TaskEntity({
       ...task,
+      status: Status.New,
       comments: [],
     });
     return this.taskRepository.create(taskData);
@@ -33,7 +35,8 @@ export class TaskService {
     return this.taskRepository.find(query);
   }
 
-  async updateTask(_id: number, _task: UpdateTaskDto): Promise<void> {
-    throw new Error('Not implemented');
+  async updateTask(id: number, task: UpdateTaskDto) {
+    const updatedEntity = new TaskEntity(task)
+    return this.taskRepository.update(id, task);
   }
 }
