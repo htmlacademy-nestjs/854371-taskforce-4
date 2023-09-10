@@ -98,10 +98,14 @@ export class TaskRepository implements CRUDRepository<TaskEntity, number, TaskIn
     });
   }
 
-  public async findByExecutorId(userId: string): Promise<TaskInterface[]> {
+  public async findActiveTaskByExecutorId(userId: string): Promise<TaskInterface[]> {
     return this.prisma.task.findMany({
       where: {
-        selectedExecutor: userId
+        selectedExecutor: userId,
+        OR: [
+          { status: Status.InProgress },
+          { status: Status.New }
+        ]
       },
       include: {
         comments: true,
@@ -151,7 +155,8 @@ export class TaskRepository implements CRUDRepository<TaskEntity, number, TaskIn
         taskId: taskId
       },
       data: {
-        selectedExecutor: executorId
+        selectedExecutor: executorId,
+        status: Status.InProgress
       },
       include: {
         comments: true,

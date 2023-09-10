@@ -4,7 +4,6 @@ import { IsArray, IsEnum, IsISO8601, IsNotEmpty, IsNumber, IsString, MaxLength, 
 import { TaskDescription, TaskSpaceMessages, TaskTitle } from '@project/shared/app-validation';
 
 export class UpdateTaskDto {
-  @IsNotEmpty({ message: TaskSpaceMessages.TASK_TITLE_EMPTY_NOT_VALID })
   @MinLength(TaskTitle.MIN_LENGTH, { message: TaskSpaceMessages.TASK_TITLE_MIN_LENGTH_NOT_VALID })
   @MaxLength(TaskTitle.MAX_LENGTH, { message: TaskSpaceMessages.TASK_TITLE_MAX_LENGTH_NOT_VALID })
   public title?: string;

@@ -17,8 +17,7 @@ export class TaskService {
   async createTask(task: CreateTaskDto): Promise<TaskInterface> {
     const taskData = new TaskEntity({
       ...task,
-      status: Status.New,
-      comments: [],
+      status: Status.New
     });
     return this.taskRepository.create(taskData);
   }
@@ -36,7 +35,24 @@ export class TaskService {
   }
 
   async updateTask(id: number, task: UpdateTaskDto) {
-    const updatedEntity = new TaskEntity(task)
-    return this.taskRepository.update(id, task);
+    const existingTask = await this.taskRepository.findById(id);
+    const updatedTask = new TaskEntity({ ...existingTask, ...task });
+    return this.taskRepository.update(id, updatedTask);
+  }
+
+  async updateTaskStatus(id: number, status: Status) {
+    return this.taskRepository.changeStatus(id, status);
+  }
+
+  async setExecutor(taskId: number, executorId: string) {
+    return this.taskRepository.setExecutor(taskId, executorId);
+  }
+
+  async addRespondExecutor(userId: string, taskId: number) {
+    return this.taskRepository.addRespondExecutor(userId, taskId);
+  }
+
+  async getActiveTaskByExecutorId(userId: string): Promise<TaskInterface[]> {
+    return this.taskRepository.findActiveTaskByExecutorId(userId);
   }
 }

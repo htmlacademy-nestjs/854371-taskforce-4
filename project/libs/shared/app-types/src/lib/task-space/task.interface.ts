@@ -18,4 +18,6 @@ export interface TaskInterface {
   comments?: CommentInterface[];
   address?: string;
   coast?: number;
+  respondingExecutors?: string[];
+  selectedExecutor?: string;
 }
