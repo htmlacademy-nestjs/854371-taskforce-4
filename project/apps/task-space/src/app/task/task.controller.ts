@@ -179,4 +179,18 @@ export class TaskController {
 
     throw new HttpException(ExceptionMessages.STATUS_BAD_REQUEST, HttpStatus.BAD_REQUEST)
   }
+
+  @UseGuards(JwtAuthGuard)
+  @Get('/my')
+  async myTasks(@Req() { user }: RequestWithPayload) {
+    const { sub, role } = user;
+
+    if (role === UserRole.Customer) {
+      return this.taskService.getTasksByCreatorId(sub);
+    }
+
+    if (role === UserRole.Executor) {
+      return this.taskService.getAllTaskByExecutorId(sub);
+    }
+  }
 }

@@ -115,6 +115,26 @@ export class TaskRepository implements CRUDRepository<TaskEntity, number, TaskIn
     });
   }
 
+  public async findByCreatorId(userId: string): Promise<TaskInterface[]> {
+    return this.prisma.task.findMany({
+      where: {
+        userId: userId
+      },
+      orderBy: [
+        { createdAt: 'desc' }
+      ],
+      include: {
+        comments: true,
+        category: true,
+        tags: true
+      }
+    });
+  }
+
+  public async findAllTasksWithExecutorId(userId: string): Promise<TaskInterface[]> {
+    return this.prisma.$queryRaw`SELECT * FROM tasks WHERE responding_executors CONTAINS ${userId} ORDER BY CASE WHEN status = 'New' THEN 1 ELSE 2 END, createdAt DESC;`
+  }
+
   public async addRespondExecutor(userId: string, taskId: number): Promise<TaskInterface> {
     return this.prisma.task.update({
       where: {

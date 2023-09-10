@@ -89,4 +89,12 @@ export class TaskService {
   async getActiveTaskByExecutorId(userId: string): Promise<TaskInterface[]> {
     return this.taskRepository.findActiveTaskByExecutorId(userId);
   }
+
+  async getAllTaskByExecutorId(userId: string): Promise<TaskInterface[]> {
+    return this.taskRepository.findAllTasksWithExecutorId(userId);
+  }
+
+  async getTasksByCreatorId(userId: string): Promise<TaskInterface[]> {
+    return this.taskRepository.findByCreatorId(userId);
+  }
 }
