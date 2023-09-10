@@ -16,8 +16,10 @@ export interface TaskInterface {
   city: City;
   userId?: string;
   comments?: CommentInterface[];
+  commentsAll?: number;
   address?: string;
   coast?: number;
   respondingExecutors?: string[];
+  respondExecutorsAll?: number;
   selectedExecutor?: string;
 }

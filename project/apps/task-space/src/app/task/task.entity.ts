@@ -16,6 +16,8 @@ export class TaskEntity implements Entity<TaskEntity, TaskInterface>, TaskInterf
   public comments?: CommentInterface[];
   public address?: string;
   public coast?: number;
+  public commentsAll: number;
+  public respondExecutorsAll: number;
 
   constructor(task: TaskInterface) {
     this.fillEntity(task);
@@ -34,6 +36,8 @@ export class TaskEntity implements Entity<TaskEntity, TaskInterface>, TaskInterf
     this.userId = entity.userId;
     this.address = entity.address;
     this.coast = entity.coast;
+    this.commentsAll = 0;
+    this.respondExecutorsAll = 0;
   }
 
   public toObject(): TaskEntity {

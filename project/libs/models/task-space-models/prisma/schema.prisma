@@ -43,6 +43,8 @@ model Task {
   dueDate             DateTime? @map("due_date")
   respondingExecutors String[]  @default([])
   selectedExecutor    String?   @default("") @map("selected_executor")
+  commentsAll         Int       @default(0)
+  respondExecutorsAll Int       @default(0)
 }
 
 model Category {

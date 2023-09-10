@@ -6,6 +6,7 @@ import { TaskEntity } from './task.entity';
 import { UpdateTaskDto } from './dto/update-task.dto';
 import { TaskQuery } from './query/task.query';
 import { Status } from '@prisma/client';
+import { SpecialSortType } from './task.constant';
 
 @Injectable()
 export class TaskService {
@@ -31,8 +32,41 @@ export class TaskService {
   }
 
   async getTasks(query: TaskQuery): Promise<TaskInterface[]> {
-    return this.taskRepository.find(query);
+    const { specialSortType, category, tag, city } = query;
+    let sortedTasks = await this.taskRepository.find(query);
+
+    sortedTasks = sortedTasks.map((task) => {
+      const commentsAll = task.comments.length;
+      const respondExecutorsAll = task.respondingExecutors.length;
+      return { ...task, commentsAll, respondExecutorsAll };
+    });
+
+    let result: TaskInterface[] = [...sortedTasks];
+
+    if (specialSortType) {
+      if (specialSortType === SpecialSortType.COMMENTS_DESC) {
+        result.sort((a, b) => b.commentsAll - a.commentsAll);
+      }
+      if (specialSortType === SpecialSortType.POPULARITY_DESC) {
+        result.sort((a, b) => b.respondExecutorsAll - a.respondExecutorsAll);
+      }
+    }
+
+    if (category) {
+      result = result.filter((task) => task.category.title === category);
+    }
+
+    if (tag) {
+      result = result.filter((task) => task.tags.some((t) => t.title === tag));
+    }
+
+    if (city) {
+      result = result.filter((task) => task.city === city);
+    }
+
+    return result;
   }
+
 
   async updateTask(id: number, task: UpdateTaskDto) {
     const existingTask = await this.taskRepository.findById(id);

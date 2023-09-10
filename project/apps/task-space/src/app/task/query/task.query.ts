@@ -1,6 +1,12 @@
-import { IsIn, IsNumber, IsOptional } from 'class-validator';
+import { IsEnum, IsIn, IsNumber, IsOptional, IsString } from 'class-validator';
 import { Transform } from 'class-transformer';
-import { DEFAULT_SORT_DIRECTION, DEFAULT_TASK_COUNT_LIMIT, MAX_TASK_COUNT_LIMIT } from '../task.constant';
+import {
+  DEFAULT_SORT_DIRECTION,
+  DEFAULT_TASK_COUNT_LIMIT,
+  MAX_TASK_COUNT_LIMIT,
+  SpecialSortType
+} from '../task.constant';
+import { City } from '@prisma/client';
 
 export class TaskQuery {
   @Transform(({ value }) => {
@@ -21,4 +27,21 @@ export class TaskQuery {
   @Transform(({ value }) => +value)
   @IsOptional()
   public page: number;
+
+  @IsEnum(SpecialSortType)
+  @IsOptional()
+  public specialSortType?: SpecialSortType;
+
+  @IsString()
+  @IsOptional()
+  public category?: string;
+
+  @IsString()
+  @IsOptional()
+  public tag?: string;
+
+  @IsEnum(City)
+  @IsOptional()
+  public city?: City;
 }
+
