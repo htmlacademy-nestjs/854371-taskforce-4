@@ -35,7 +35,7 @@ export class TaskController {
   }
 
   @UseGuards(JwtAuthGuard)
-  @Get('/new')
+  @Get('/show/new')
   async index(@Query() query: TaskQuery, @Req() { user }: RequestWithPayload) {
     const { role } = user;
 
@@ -181,16 +181,18 @@ export class TaskController {
   }
 
   @UseGuards(JwtAuthGuard)
-  @Get('/my')
+  @Get('/show/my')
   async myTasks(@Req() { user }: RequestWithPayload) {
     const { sub, role } = user;
 
     if (role === UserRole.Customer) {
-      return this.taskService.getTasksByCreatorId(sub);
+      const result = await this.taskService.getTasksByCreatorId(sub);
+      return fillObject(TaskRdo, result);
     }
 
     if (role === UserRole.Executor) {
-      return this.taskService.getAllTaskByExecutorId(sub);
+      const result = await this.taskService.getAllTaskByExecutorId(sub);
+      return fillObject(TaskRdo, result);
     }
   }
 }

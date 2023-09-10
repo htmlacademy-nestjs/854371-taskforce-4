@@ -1,0 +1,15 @@
+POST http://localhost:3000/api/comments
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NGY5ZjlmMWIzZDlmNzRkNDM5ZmRlOWUiLCJlbWFpbCI6InFRT05ZQGdtYWlsLmNvbSIsInJvbGUiOiJjdXN0b21lciIsIm5hbWUiOiJ0ZXN0TmFtdzAiLCJpYXQiOjE2OTQzNTM5ODYsImV4cCI6MTY5NDQ0MDM4Nn0.7pixiKYEbld70Pmz2cujBWQlRJ8MW-qePLka3YlgWxI
+Content-Type: application/json
+
+{
+  "message": "{{$random.alphabetic(10)}}",
+  "taskId": 3
+}
+
+###
+
+DELETE http://localhost:3000/api/comments/4
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NGY5ZjlmMWIzZDlmNzRkNDM5ZmRlOWUiLCJlbWFpbCI6InFRT05ZQGdtYWlsLmNvbSIsInJvbGUiOiJjdXN0b21lciIsIm5hbWUiOiJ0ZXN0TmFtdzAiLCJpYXQiOjE2OTQzNTM5ODYsImV4cCI6MTY5NDQ0MDM4Nn0.7pixiKYEbld70Pmz2cujBWQlRJ8MW-qePLka3YlgWxI
+
+###

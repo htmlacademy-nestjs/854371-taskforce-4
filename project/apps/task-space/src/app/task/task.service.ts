@@ -38,6 +38,7 @@ export class TaskService {
     sortedTasks = sortedTasks.map((task) => {
       const commentsAll = task.comments.length;
       const respondExecutorsAll = task.respondingExecutors.length;
+      console.log(commentsAll, respondExecutorsAll)
       return { ...task, commentsAll, respondExecutorsAll };
     });
 
