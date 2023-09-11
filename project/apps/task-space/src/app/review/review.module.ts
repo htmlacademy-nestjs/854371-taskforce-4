@@ -6,6 +6,7 @@ import { getSimpleJwtOptions } from '@project/config/task-config';
 import { JwtAccessStrategy } from '@project/shared/authentication';
 import { ReviewRepository } from './review.repository';
 import { ReviewService } from './review.service';
+import { ReviewController } from './review.controller';
 
 @Module({
   imports: [
@@ -16,9 +17,9 @@ import { ReviewService } from './review.service';
     }),
   ],
   controllers: [
-    ReviewModule
+    ReviewController
   ],
   providers: [ReviewService, ReviewRepository, JwtAccessStrategy],
-  exports: []
+  exports: [ReviewRepository]
 })
 export class ReviewModule {}

@@ -14,6 +14,7 @@ export class JwtAccessStrategy extends PassportStrategy(Strategy) {
       ignoreExpiration: false,
       secretOrKey: configService.get<string>('jwt.secret') ?? configService.get<string>('simple-jwt.secret')
     })
+    console.log(configService.get<string>('jwt.secret'), configService.get<string>('simple-jwt.secret'));
   }
 
   public async validate(payload: TokenPayloadInterface) {
