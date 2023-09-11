@@ -3,16 +3,16 @@ import { CreateReviewDto } from './dto/create-review.dto';
 import { Body, Controller, Get, HttpException, HttpStatus, Param, Post, Query, Req, UseGuards } from '@nestjs/common';
 import { RequestWithPayload, ReviewInterface, UserRole } from '@project/shared/app-types';
 import { ExceptionMessages, JwtAuthGuard } from '@project/shared/authentication';
-import { TaskService } from '../task/task.service';
 import { MongoIdValidationPipe } from '@project/shared/shared-pipes';
 import { ApiBearerAuth, ApiBody, ApiParam, ApiQuery, ApiResponse, ApiTags } from '@nestjs/swagger';
+import { TaskRepository } from '../task/task.repository';
 
 @ApiTags('reviews')
 @Controller('reviews')
 export class ReviewController {
   constructor(
     private readonly reviewService: ReviewService,
-    private readonly taskService: TaskService
+    private readonly taskRepository: TaskRepository
   ) {
   }
 
@@ -53,7 +53,7 @@ export class ReviewController {
       throw new HttpException(ExceptionMessages.FORBIDDEN, HttpStatus.FORBIDDEN);
     }
 
-    const existTask = await this.taskService.getTask(taskId);
+    const existTask = await this.taskRepository.findById(taskId)
     if (!existTask) {
       throw new HttpException(ExceptionMessages.TASK_NOT_FOUND, HttpStatus.NOT_FOUND);
     }
