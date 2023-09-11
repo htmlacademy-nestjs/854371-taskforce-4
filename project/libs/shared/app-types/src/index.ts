@@ -15,3 +15,4 @@ export * from './lib/user/token.interface';
 export * from './lib/user/refresh-token-payload.interface';
 export * from './lib/user/request-with-payload'
 export * from './lib/task-space/review.interface';
+export * from './lib/notify/mail.interface';

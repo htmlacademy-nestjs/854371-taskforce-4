@@ -1,24 +1,11 @@
 import { City } from '@prisma/client';
-import { IsEnum, IsNotEmpty, IsNumber, IsString } from 'class-validator';
+import { IsArray } from 'class-validator';
 
 export class CreateSubscriberDto {
-  @IsNotEmpty()
-  @IsString()
-  public userId: string
+  @IsArray()
+  public title: string;
 
-  @IsNotEmpty()
-  @IsString()
-  public title: string
+  public date: Date;
 
-  @IsNotEmpty()
-  @IsString()
-  public description: string
-
-  @IsNotEmpty()
-  @IsEnum(City)
-  public city: City
-
-  @IsNotEmpty()
-  @IsNumber()
-  public coast: number
+  public email: string
 }

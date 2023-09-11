@@ -8,19 +8,10 @@ import { City } from '@prisma/client';
 })
 export class EmailSubscriberModel extends Document implements SubscriberInterface {
   @Prop()
-  public userId: string
-
-  @Prop()
   public title: string
 
   @Prop()
-  public description: string
-
-  @Prop()
-  public city: City
-
-  @Prop()
-  public coast: number
+  public role: string
 }
 
 export const EmailSubscriberSchema = SchemaFactory.createForClass(EmailSubscriberModel);

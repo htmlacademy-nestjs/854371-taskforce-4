@@ -9,7 +9,8 @@ import { Injectable } from '@nestjs/common';
 export class EmailSubscriberRepository implements CRUDRepository<EmailSubscriberEntity, string, SubscriberInterface> {
   constructor(
     @InjectModel(EmailSubscriberEntity.name) private readonly emailSubscriberModel: Model<EmailSubscriberEntity>
-  ) {}
+  ) {
+  }
 
   public async create(entity: SubscriberInterface): Promise<SubscriberInterface> {
     const newEmailSubscriber = new this.emailSubscriberModel(entity);
@@ -24,11 +25,20 @@ export class EmailSubscriberRepository implements CRUDRepository<EmailSubscriber
     return this.emailSubscriberModel.findByIdAndDelete(id);
   }
 
+  public async findAll(date: Date): Promise<SubscriberInterface[]> {
+    return this.emailSubscriberModel.find(
+      {
+        date: {
+          $gt: date
+        }
+      }).exec();
+  }
+
   public async findById(id: string): Promise<SubscriberInterface | null> {
     return this.emailSubscriberModel.findById(id).exec();
   }
 
-  public async findByEmail(email: string): Promise<SubscriberInterface | null> {
-    return this.emailSubscriberModel.findOne({ email }).exec();
+  public async findByTitle(title: string): Promise<SubscriberInterface | null> {
+    return this.emailSubscriberModel.findOne({ title }).exec();
   }
 }
