@@ -45,7 +45,7 @@ model Task {
   selectedExecutor    String?   @default("") @map("selected_executor")
   commentsAll         Int       @default(0)
   respondExecutorsAll Int       @default(0)
-  reviews             Review[]
+  review              Review?
 }
 
 model Category {
@@ -77,9 +77,14 @@ model Comment {
 }
 
 model Review {
-  reviewId   Int    @id @default(autoincrement()) @map("review_id")
-  textReview String @map("text_review")
-  task       Task   @relation(fields: [taskId], references: [taskId], onDelete: Cascade, onUpdate: Cascade)
-  taskId     Int    @map("task_id")
-  assessment Int    @default(0)
+  reviewId   Int      @id @default(autoincrement()) @map("review_id")
+  textReview String   @map("text_review")
+  task       Task     @relation(fields: [taskId], references: [taskId])
+  taskId     Int      @map("task_id") @unique
+  assessment Int      @default(0)
+  createdAt  DateTime @default(now()) @map("created_at")
+  updatedAt  DateTime @updatedAt @map("updated_at")
+  executorId String   @map("executor_id")
+
+  @@map("reviews")
 }

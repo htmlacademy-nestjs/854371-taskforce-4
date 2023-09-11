@@ -14,3 +14,4 @@ export * from './lib/user/request-with.user'
 export * from './lib/user/token.interface';
 export * from './lib/user/refresh-token-payload.interface';
 export * from './lib/user/request-with-payload'
+export * from './lib/task-space/review.interface';

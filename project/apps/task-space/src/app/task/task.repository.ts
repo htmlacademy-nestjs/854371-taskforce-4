@@ -185,4 +185,13 @@ export class TaskRepository implements CRUDRepository<TaskEntity, number, TaskIn
       }
     })
   }
+
+  public async getCountFailTaskByExecutorId(userId: string): Promise<number> {
+    return this.prisma.task.count({
+      where: {
+        selectedExecutor: userId,
+        status: Status.Failed
+      }
+    });
+  }
 }
