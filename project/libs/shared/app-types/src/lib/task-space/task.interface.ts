@@ -10,12 +10,16 @@ export interface TaskInterface {
   taskImage: string;
   createdAt?: Date;
   publishAt?: Date;
-  status: Status;
+  status?: Status;
   category: CategoryInterface;
   tags: TagInterface[];
   city: City;
   userId?: string;
-  comments: CommentInterface[];
+  comments?: CommentInterface[];
+  commentsAll?: number;
   address?: string;
   coast?: number;
+  respondingExecutors?: string[];
+  respondExecutorsAll?: number;
+  selectedExecutor?: string;
 }

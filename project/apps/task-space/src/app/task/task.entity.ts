@@ -13,9 +13,11 @@ export class TaskEntity implements Entity<TaskEntity, TaskInterface>, TaskInterf
   public tags: TagInterface[];
   public city: City;
   public userId?: string;
-  public comments: CommentInterface[];
+  public comments?: CommentInterface[];
   public address?: string;
   public coast?: number;
+  public commentsAll: number;
+  public respondExecutorsAll: number;
 
   constructor(task: TaskInterface) {
     this.fillEntity(task);
@@ -32,16 +34,16 @@ export class TaskEntity implements Entity<TaskEntity, TaskInterface>, TaskInterf
     this.tags = [ ...entity.tags ];
     this.city = entity.city;
     this.userId = entity.userId;
-    this.comments = [];
     this.address = entity.address;
     this.coast = entity.coast;
+    this.commentsAll = 0;
+    this.respondExecutorsAll = 0;
   }
 
   public toObject(): TaskEntity {
     return ({
       ...this,
       tags: [ ...this.tags ],
-      comments: [ ...this.comments ]
     });
   }
 }

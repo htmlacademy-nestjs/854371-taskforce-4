@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE "Task" ADD COLUMN     "commentsAll" INTEGER NOT NULL DEFAULT 0,
+ADD COLUMN     "respondExecutorsAll" INTEGER NOT NULL DEFAULT 0;

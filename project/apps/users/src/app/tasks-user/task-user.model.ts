@@ -1,5 +1,5 @@
 import { Document } from 'mongoose';
-import { Cities, UserInterface, UserRole } from '@project/shared/app-types';
+import { UserInterface, UserRole } from '@project/shared/app-types';
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { City } from '@prisma/client';
 
@@ -77,7 +77,7 @@ export class TaskUserModel extends Document implements UserInterface {
     required: true,
     type: String,
     enum: UserRole,
-    default: UserRole.User,
+    default: UserRole.Executor,
   })
   public role: UserRole;
 
