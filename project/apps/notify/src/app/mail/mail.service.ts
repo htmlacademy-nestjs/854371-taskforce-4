@@ -10,17 +10,18 @@ export class MailService {
   constructor(
     private readonly mailerService: MailerService,
     private readonly mailRepository: MailRepository
-  ) {}
+  ) {
+  }
 
   public async sendNotifyNewSubscriber(subscribers: SubscriberInterface[], email: string) {
-      await this.mailerService.sendMail({
-        to: email,
-        subject: EMAIL_ADD_SUBSCRIBER_SUBJECT,
-        template: './add-subscriber',
-        context: {
-          titles: subscribers.map((item) => item.title),
-        }
-    })
+    await this.mailerService.sendMail({
+      to: email,
+      subject: EMAIL_ADD_SUBSCRIBER_SUBJECT,
+      template: './add-subscriber',
+      context: {
+        titles: subscribers.map((item) => item.title),
+      }
+    });
   }
 
   public async createMail(entity: MailInterface) {

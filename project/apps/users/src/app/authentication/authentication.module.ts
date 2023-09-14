@@ -14,7 +14,7 @@ import { JwtAccessStrategy } from '@project/shared/authentication';
   imports: [
     TasksUserModule,
     JwtModule.registerAsync({
-      inject: [ConfigService],
+      inject: [ ConfigService ],
       useFactory: getJwtOptions
     }),
     RefreshTokenModule

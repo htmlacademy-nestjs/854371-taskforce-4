@@ -91,7 +91,7 @@ export default registerAs('notify', (): NotifyConfig => {
     })
   });
 
-  const { error } = validationSchema.validate(config)
+  const { error } = validationSchema.validate(config);
   if (error) {
     throw new Error(
       `[Notify Config]: Environments validation failed. Please check .env file.

@@ -15,7 +15,6 @@ import { ApiBody, ApiConsumes, ApiParam, ApiResponse, ApiTags } from '@nestjs/sw
 export class FileController {
   constructor(
     private readonly fileService: FileService,
-
     @Inject(uploaderConfig.KEY)
     private readonly applicationConfig: ConfigType<typeof uploaderConfig>
   ) {
@@ -46,9 +45,9 @@ export class FileController {
     required: true
   })
   @Get(':fileId')
-  async getFile(@Param('fileId', MongoIdValidationPipe ) fileId: string) {
-    const existFile = await this.fileService.getFile(fileId)
-    const path = `${this.applicationConfig.serveRoot}/${existFile.path}`
+  async getFile(@Param('fileId', MongoIdValidationPipe) fileId: string) {
+    const existFile = await this.fileService.getFile(fileId);
+    const path = `${this.applicationConfig.serveRoot}/${existFile.path}`;
     return fillObject(UploadedFileRdo, Object.assign(existFile, { path }));
   }
 }

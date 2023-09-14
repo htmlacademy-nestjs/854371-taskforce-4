@@ -14,14 +14,14 @@ export default registerAs('jwt', (): JwtConfig => {
     expiresIn: process.env['JWT_EXPIRES_IN'] ?? '',
     refreshTokenSecret: process.env['REFRESH_TOKEN_SECRET'] ?? '',
     refreshTokenExpiresIn: process.env['REFRESH_TOKEN_EXPIRES_IN'] ?? ''
-  }
+  };
 
   const validationSchema = Joi.object<JwtConfig>({
     secret: Joi.string().required(),
     expiresIn: Joi.string().required(),
     refreshTokenSecret: Joi.string().required(),
     refreshTokenExpiresIn: Joi.string().required()
-  })
+  });
 
   const { error } = validationSchema.validate(config, { abortEarly: true });
 
@@ -33,4 +33,4 @@ export default registerAs('jwt', (): JwtConfig => {
   }
 
   return config;
-})
+});

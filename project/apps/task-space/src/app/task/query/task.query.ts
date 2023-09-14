@@ -16,10 +16,10 @@ export class TaskQuery {
   })
   @Transform(({ value }) => {
     if (+value) {
-      return +value > MAX_TASK_COUNT_LIMIT ? MAX_TASK_COUNT_LIMIT : +value
+      return +value > MAX_TASK_COUNT_LIMIT ? MAX_TASK_COUNT_LIMIT : +value;
     }
 
-    return DEFAULT_TASK_COUNT_LIMIT
+    return DEFAULT_TASK_COUNT_LIMIT;
   })
   @IsNumber()
   @IsOptional()
@@ -27,10 +27,10 @@ export class TaskQuery {
 
   @ApiProperty({
     description: 'Task sort direction',
-    enum: ['asc', 'desc'],
+    enum: [ 'asc', 'desc' ],
     example: 'desc',
   })
-  @IsIn(['asc', 'desc'])
+  @IsIn([ 'asc', 'desc' ])
   @IsOptional()
   public sortDirection: 'desc' | 'asc' = DEFAULT_SORT_DIRECTION;
 

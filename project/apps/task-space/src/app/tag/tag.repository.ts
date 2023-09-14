@@ -8,39 +8,40 @@ import { Injectable } from '@nestjs/common';
 export class TagRepository implements CRUDRepository<TagEntity, number, TagInterface> {
   constructor(
     private readonly prisma: PrismaService
-  ) {}
+  ) {
+  }
 
   async create(entity: TagEntity): Promise<TagInterface> {
     return this.prisma.tags.create({
       data: { ...entity.toObject() }
-    })
+    });
   }
 
   async remove(id: number): Promise<void> {
     await this.prisma.tags.delete({
       where: { tagId: id }
-    })
+    });
   }
 
   async update(id: number, entity: TagEntity): Promise<TagInterface> {
     return this.prisma.tags.update({
       where: { tagId: id },
       data: { ...entity.toObject(), tagId: id }
-    })
+    });
   }
 
   async findById(id: number): Promise<TagInterface | null> {
     return this.prisma.tags.findFirst({
       where:
         { tagId: id }
-    })
+    });
   }
 
   async findByTagName(tagName: string): Promise<TagInterface | null> {
     return this.prisma.tags.findFirst({
       where:
         { title: tagName }
-    })
+    });
   }
 
   async findByIds(ids: number[]): Promise<TagInterface[]> {
@@ -50,6 +51,6 @@ export class TagRepository implements CRUDRepository<TagEntity, number, TagInter
           in: ids
         }
       }
-    })
+    });
   }
 }

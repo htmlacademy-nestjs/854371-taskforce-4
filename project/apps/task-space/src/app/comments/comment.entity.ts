@@ -9,7 +9,7 @@ export class CommentEntity implements Entity<CommentEntity, CommentInterface>, C
   public updatedAt: Date;
 
   constructor(comment: CommentInterface) {
-    this.fillEntity(comment)
+    this.fillEntity(comment);
   }
 
   public fillEntity(entity: CommentInterface) {

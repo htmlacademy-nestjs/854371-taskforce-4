@@ -15,8 +15,8 @@ export function getMongooseOptions(optionSpace: string): MongooseModuleAsyncOpti
           authDB: config.get<string>(`${optionSpace}.authBase`),
           dbName: config.get<string>(`${optionSpace}.name`),
         })
-      }
+      };
     },
-    inject: [ConfigService]
-  }
+    inject: [ ConfigService ]
+  };
 }

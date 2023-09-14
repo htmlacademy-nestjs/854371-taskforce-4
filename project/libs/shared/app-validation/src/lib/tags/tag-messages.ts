@@ -6,4 +6,4 @@ export const TagMessages = {
   TAG_TITLE_REGULAR_EXPRESSION_CHECK_NOT_VALID: `The tag must start with a letter`,
   TAGS_MAX_COUNT_NOT_VALID: `Max count of tags is ${TagParameters.MAX_COUNT_TAGS}`,
   TAG_IS_NOT_VALID: 'Tag is not valid'
-}
+};

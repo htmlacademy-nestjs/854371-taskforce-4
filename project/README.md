@@ -118,7 +118,7 @@ DATABASE_URL=
 
 ### Запуск uploader
 
-1.  **Сборка приложения**:
+1. **Сборка приложения**:
 
 ```bssh
 nx run uploader:build:development
@@ -130,7 +130,7 @@ nx run uploader:build:development
 nx run uploader:build:production
 ```
 
-2.  **Запуск приложения**:
+2. **Запуск приложения**:
 
 ```bssh
 nx run uploader:serve:development
@@ -141,7 +141,6 @@ nx run uploader:serve:development
 ```bssh
 nx run uploader:serve:production
 ```
-
 
 ### Переменные окружения для uploader
 

@@ -17,11 +17,12 @@ import { getRabbitOptions } from '@project/util/util-core';
       getRabbitOptions('notify.rabbit')
     ),
   ],
-  controllers: [EmailSubscriberController],
+  controllers: [ EmailSubscriberController ],
   providers: [
     EmailSubscriberService,
     EmailSubscriberRepository,
     EmailSubscriberController
   ],
 })
-export class EmailSubscriberModule {}
+export class EmailSubscriberModule {
+}

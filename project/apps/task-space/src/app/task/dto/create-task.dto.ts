@@ -1,14 +1,6 @@
 import { CategoryInterface, TagInterface } from '@project/shared/app-types';
 import { City } from '@prisma/client';
-import {
-  IsArray,
-  IsEnum,
-  IsISO8601,
-  IsNotEmpty, IsNumber,
-  IsString,
-  MaxLength,
-  MinLength,
-} from 'class-validator';
+import { IsArray, IsEnum, IsISO8601, IsNotEmpty, IsNumber, IsString, MaxLength, MinLength, } from 'class-validator';
 import { TaskDescription, TaskSpaceMessages, TaskTitle } from '@project/shared/app-validation';
 import { ApiProperty } from '@nestjs/swagger';
 

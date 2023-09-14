@@ -13,7 +13,7 @@ export class RefreshTokenModel extends Document implements TokenInterface {
   @Prop({ required: true })
   public tokenId: string;
 
-  @Prop( { required: true })
+  @Prop({ required: true })
   public userId: string;
 
   @Prop({ required: true })

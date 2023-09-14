@@ -10,7 +10,8 @@ import { ApiBearerAuth, ApiBody, ApiParam, ApiQuery, ApiResponse, ApiTags } from
 export class CommentController {
   constructor(
     private readonly commentService: CommentService
-  ) {}
+  ) {
+  }
 
   @ApiBearerAuth()
   @ApiBody({

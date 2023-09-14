@@ -3,4 +3,4 @@ export const NotifyValidationMessages = {
   NAME_EMPTY_NOT_VALID: 'Name is empty',
   USER_ID_EMPTY_NOT_VALID: 'User id is empty',
   TASKS_EMPTY_NOT_VALID: 'Tasks are empty',
-}
+};

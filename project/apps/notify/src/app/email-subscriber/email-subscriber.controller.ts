@@ -10,7 +10,8 @@ export class EmailSubscriberController {
   constructor(
     private readonly subscriberService: EmailSubscriberService,
     private readonly mailService: MailService
-  ) {}
+  ) {
+  }
 
   @RabbitSubscribe({
     exchange: 'typoteka.notify',
@@ -24,7 +25,7 @@ export class EmailSubscriberController {
   @Get('/')
   public async show(@Body() subscriber: CreateSubscriberDto) {
     const subscribers = await this.subscriberService.getSubscribers(subscriber);
-    await this.mailService.sendNotifyNewSubscriber(subscribers, subscriber.email)
-    await this.mailService.createMail({email: subscriber.email})
+    await this.mailService.sendNotifyNewSubscriber(subscribers, subscriber.email);
+    await this.mailService.createMail({ email: subscriber.email });
   }
 }
