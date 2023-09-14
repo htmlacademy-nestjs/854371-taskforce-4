@@ -12,7 +12,7 @@ export function parseTime(time: string): TimeWithUnit {
     throw new Error(`[parseTime] Bad time string: ${time}`);
   }
 
-  const [, valueRaw, unitRaw] = match;
+  const [ , valueRaw, unitRaw ] = match;
   const value = parseInt(valueRaw, 10);
   const unit = unitRaw as DateTimeUnit;
 
@@ -20,5 +20,5 @@ export function parseTime(time: string): TimeWithUnit {
     throw new Error(`[parseTime] Can't parse value count. Result is NaN.`);
   }
 
-  return { value, unit }
+  return { value, unit };
 }

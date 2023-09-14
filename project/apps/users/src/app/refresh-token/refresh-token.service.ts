@@ -11,8 +11,9 @@ import dayjs from 'dayjs';
 export class RefreshTokenService {
   constructor(
     private readonly refreshTokenRepository: RefreshTokenRepository,
-    @Inject (jwtConfig.KEY) private readonly jwtOptions: ConfigType<typeof jwtConfig>,
-  ) {}
+    @Inject(jwtConfig.KEY) private readonly jwtOptions: ConfigType<typeof jwtConfig>,
+  ) {
+  }
 
   public async createRefreshSession(payload: RefreshTokenPayload) {
     const timeValue = parseTime(this.jwtOptions.refreshTokenExpiresIn);
@@ -28,7 +29,7 @@ export class RefreshTokenService {
 
   public async deleteRefreshSession(tokenId: string) {
     await this.deleteExpiredRefreshTokens();
-    return this.refreshTokenRepository.deleteByTokenId(tokenId)
+    return this.refreshTokenRepository.deleteByTokenId(tokenId);
   }
 
   public async isExists(tokenId: string): Promise<boolean> {

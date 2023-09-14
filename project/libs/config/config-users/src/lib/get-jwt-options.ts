@@ -8,5 +8,5 @@ export async function getJwtOptions(configService: ConfigService): Promise<JwtMo
       expiresIn: configService.get<string>('jwt.expiresIn'),
       algorithm: 'HS256',
     }
-  }
+  };
 }

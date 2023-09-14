@@ -8,7 +8,8 @@ import { Injectable } from '@nestjs/common';
 export class MailRepository {
   constructor(
     @InjectModel(MailEntity.name) private readonly mailModel: Model<MailEntity>
-  ) {}
+  ) {
+  }
 
   public async create(entity: MailInterface) {
     const newMail = new this.mailModel(entity);

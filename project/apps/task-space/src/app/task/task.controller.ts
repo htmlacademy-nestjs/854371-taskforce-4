@@ -4,12 +4,14 @@ import {
   Controller,
   Delete,
   Get,
-  HttpCode, HttpException,
+  HttpCode,
+  HttpException,
   HttpStatus,
   Param,
   Patch,
   Post,
-  Query, Req,
+  Query,
+  Req,
   UseGuards
 } from '@nestjs/common';
 import { fillObject } from '@project/util/util-core';
@@ -130,7 +132,7 @@ export class TaskController {
   })
   @UseGuards(JwtAuthGuard)
   @Patch('/:id')
-  async update(@Param('id') id: number, @Body() dto: UpdateTaskDto,  @Req() { user }: RequestWithPayload) {
+  async update(@Param('id') id: number, @Body() dto: UpdateTaskDto, @Req() { user }: RequestWithPayload) {
     const { sub, role } = user;
 
     if (role !== UserRole.Customer) {
@@ -263,7 +265,7 @@ export class TaskController {
       return fillObject(TaskRdo, this.taskService.updateTaskStatus(taskId, status));
     }
 
-    throw new HttpException(ExceptionMessages.STATUS_BAD_REQUEST, HttpStatus.BAD_REQUEST)
+    throw new HttpException(ExceptionMessages.STATUS_BAD_REQUEST, HttpStatus.BAD_REQUEST);
   }
 
   @ApiBearerAuth()

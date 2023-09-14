@@ -14,8 +14,8 @@ export class ReviewEntity implements Entity<ReviewEntity, ReviewInterface>, Revi
   public fillEntity(entity: ReviewInterface) {
     this.textReview = entity.textReview;
     this.assessment = entity.assessment;
-    this.executorId = entity.executorId
-    this.taskSub = entity.taskSub
+    this.executorId = entity.executorId;
+    this.taskSub = entity.taskSub;
   }
 
   public toObject(): ReviewEntity {

@@ -19,6 +19,6 @@ export function getRabbitOptions(optionSpace: string) {
       connectionInitOptions: { wait: true },
       enableControllerDiscovery: true
     }),
-    inject: [ConfigService]
-  }
+    inject: [ ConfigService ]
+  };
 }

@@ -1,4 +1,4 @@
-import { Module } from "@nestjs/common";
+import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import simpleJwtConfig from './config/simple-jwt.config';
 
@@ -17,4 +17,5 @@ const ENV_USERS_FILE_PATH = 'apps/task-space/.env';
   providers: [],
   exports: [],
 })
-export class ConfigTaskSpaceModule {}
+export class ConfigTaskSpaceModule {
+}

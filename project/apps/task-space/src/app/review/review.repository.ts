@@ -30,7 +30,7 @@ export class ReviewRepository {
   }
 
   public async getReviews(limit: number = 50, page?: number): Promise<ReviewInterface[]> {
-    const updatedLimit = limit <= 500 ? limit : 500
+    const updatedLimit = limit <= 500 ? limit : 500;
     return this.prisma.review.findMany({
       take: updatedLimit,
       skip: page > 0 ? updatedLimit * (page - 1) : undefined,

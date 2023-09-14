@@ -7,6 +7,7 @@ export class RefreshTokenEntity implements Entity<RefreshTokenEntity, TokenInter
   public id: string;
   public tokenId: string;
   public userId: string;
+
   [key: string]: unknown;
 
   constructor(refreshToken: TokenInterface) {

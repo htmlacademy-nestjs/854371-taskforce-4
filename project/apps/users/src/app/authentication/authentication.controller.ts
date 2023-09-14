@@ -43,7 +43,7 @@ export class AuthenticationController {
   @Post('login')
   @HttpCode(HttpStatus.OK)
   public async login(@Req() { user }: RequestWithUser) {
-    return this.authService.createUserToken(user)
+    return this.authService.createUserToken(user);
   }
 
 

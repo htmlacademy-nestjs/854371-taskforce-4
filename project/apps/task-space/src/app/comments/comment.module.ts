@@ -12,12 +12,13 @@ import { JwtAccessStrategy } from '@project/shared/authentication';
   imports: [
     TaskModule,
     JwtModule.registerAsync({
-      inject: [ConfigService],
+      inject: [ ConfigService ],
       useFactory: getSimpleJwtOptions
     }),
   ],
-  controllers: [CommentController],
-  providers: [CommentService, CommentRepository, JwtAccessStrategy],
-  exports: [CommentRepository]
+  controllers: [ CommentController ],
+  providers: [ CommentService, CommentRepository, JwtAccessStrategy ],
+  exports: [ CommentRepository ]
 })
-export class CommentModule {}
+export class CommentModule {
+}

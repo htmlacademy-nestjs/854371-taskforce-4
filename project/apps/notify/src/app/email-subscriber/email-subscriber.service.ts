@@ -5,7 +5,8 @@ import { EmailSubscriberEntity } from './email-subscriber.entity';
 export class EmailSubscriberService {
   constructor(
     private readonly emailSubscriberRepository: EmailSubscriberRepository
-  ) {}
+  ) {
+  }
 
   public async addSubscriber(subscriber: CreateSubscriberDto) {
     const existSubscriber = await this.emailSubscriberRepository.findByTitle(subscriber.title);

@@ -34,7 +34,7 @@ export class CategoryController {
   @ApiResponse({
     status: HttpStatus.OK,
     description: 'The list of categories',
-    type: [CategoryRdo],
+    type: [ CategoryRdo ],
   })
   @Get('/')
   async index() {

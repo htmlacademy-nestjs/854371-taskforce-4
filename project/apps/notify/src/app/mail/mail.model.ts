@@ -1,5 +1,5 @@
 import { Prop, Schema } from '@nestjs/mongoose';
-import { MailInterface, SubscriberInterface } from '@project/shared/app-types';
+import { MailInterface } from '@project/shared/app-types';
 
 @Schema({
   collection: 'mails',

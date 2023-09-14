@@ -1,4 +1,4 @@
-import { Cities, UserInterface, UserRole } from '@project/shared/app-types';
+import { UserInterface, UserRole } from '@project/shared/app-types';
 import { compare, genSalt, hash } from 'bcrypt';
 import { SALT_ROUNDS } from './task-user.constant';
 import { City } from '@prisma/client';

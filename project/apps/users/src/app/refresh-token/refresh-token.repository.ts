@@ -27,6 +27,6 @@ export class RefreshTokenRepository {
 
   public async deleteExpiredTokens() {
     return this.refreshTokenModel
-      .deleteMany({ expiresIn: { $lt: new Date()}})
+      .deleteMany({ expiresIn: { $lt: new Date() } });
   }
 }

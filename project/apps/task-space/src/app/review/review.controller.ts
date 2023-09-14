@@ -53,7 +53,7 @@ export class ReviewController {
       throw new HttpException(ExceptionMessages.FORBIDDEN, HttpStatus.FORBIDDEN);
     }
 
-    const existTask = await this.taskRepository.findById(taskId)
+    const existTask = await this.taskRepository.findById(taskId);
     if (!existTask) {
       throw new HttpException(ExceptionMessages.TASK_NOT_FOUND, HttpStatus.NOT_FOUND);
     }

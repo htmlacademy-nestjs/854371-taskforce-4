@@ -11,7 +11,8 @@ import { ApiBody, ApiParam, ApiQuery, ApiResponse, ApiTags } from '@nestjs/swagg
 export class TagController {
   constructor(
     private readonly tagService: TagService
-  ) {}
+  ) {
+  }
 
   @ApiBody({
     description: 'The tag to create',
@@ -62,7 +63,7 @@ export class TagController {
   })
   @ApiResponse({
     description: 'The tags',
-    type: [TagRdo],
+    type: [ TagRdo ],
   })
   @Get('/')
   async showMany(@Query('ids') query: string) {

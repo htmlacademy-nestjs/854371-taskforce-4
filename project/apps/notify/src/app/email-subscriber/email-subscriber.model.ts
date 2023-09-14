@@ -1,6 +1,5 @@
 import { SubscriberInterface } from '@project/shared/app-types';
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { City } from '@prisma/client';
 
 @Schema({
   collection: 'email-subscribers',
@@ -8,10 +7,10 @@ import { City } from '@prisma/client';
 })
 export class EmailSubscriberModel extends Document implements SubscriberInterface {
   @Prop()
-  public title: string
+  public title: string;
 
   @Prop()
-  public role: string
+  public role: string;
 }
 
 export const EmailSubscriberSchema = SchemaFactory.createForClass(EmailSubscriberModel);

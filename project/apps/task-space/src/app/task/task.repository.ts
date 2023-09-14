@@ -132,7 +132,7 @@ export class TaskRepository implements CRUDRepository<TaskEntity, number, TaskIn
   }
 
   public async findAllTasksWithExecutorId(userId: string): Promise<TaskInterface[]> {
-    return this.prisma.$queryRaw`SELECT * FROM tasks WHERE responding_executors CONTAINS ${userId} ORDER BY CASE WHEN status = 'New' THEN 1 ELSE 2 END, createdAt DESC;`
+    return this.prisma.$queryRaw`SELECT * FROM tasks WHERE responding_executors CONTAINS ${userId} ORDER BY CASE WHEN status = 'New' THEN 1 ELSE 2 END, createdAt DESC;`;
   }
 
   public async addRespondExecutor(userId: string, taskId: number): Promise<TaskInterface> {
@@ -183,7 +183,7 @@ export class TaskRepository implements CRUDRepository<TaskEntity, number, TaskIn
         category: true,
         tags: true
       }
-    })
+    });
   }
 
   public async getCountFailTaskByExecutorId(userId: string): Promise<number> {

@@ -1,6 +1,6 @@
 import { registerAs } from '@nestjs/config';
 import * as Joi from 'joi';
-import { DefaultAppsPorts, DefaultAnotherPorts } from '@project/shared/app-types';
+import { DefaultAnotherPorts, DefaultAppsPorts } from '@project/shared/app-types';
 
 export interface UploaderConfig {
   serveRoot: string;

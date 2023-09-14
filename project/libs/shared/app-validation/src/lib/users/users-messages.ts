@@ -8,4 +8,4 @@ export const UserDtoValidateMessages = {
   PASSWORD_MAX_LENGTH_NOT_VALID: 'User\'s password is too long (max 12)',
   ROLE_IS_NOT_VALID: 'User\'s role is not valid',
   BIRTHDAY_IS_NOT_VALID: 'User\'s birthday is not valid'
-} as const
+} as const;
