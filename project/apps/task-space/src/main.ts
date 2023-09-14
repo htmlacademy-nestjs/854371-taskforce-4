@@ -20,14 +20,14 @@ async function bootstrap() {
     .build();
 
   const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('spec', app, document)
+  SwaggerModule.setup('spec', app, document);
 
   const globalPrefix = 'api';
   app.setGlobalPrefix(globalPrefix);
 
   app.useGlobalPipes(new ValidationPipe({
     transform: true
-  }))
+  }));
 
   const port = process.env.PORT || DefaultAppsPorts.TASK_SPACE;
   await app.listen(port);

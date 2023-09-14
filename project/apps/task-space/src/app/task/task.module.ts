@@ -12,7 +12,7 @@ import { getSimpleJwtOptions } from '@project/config/task-config';
   imports: [
     CategoryModule,
     JwtModule.registerAsync({
-      inject: [ConfigService],
+      inject: [ ConfigService ],
       useFactory: getSimpleJwtOptions
     }),
   ],

@@ -1,6 +1,5 @@
 import { Entity } from '@project/util/util-types';
 import { SubscriberInterface } from '@project/shared/app-types';
-import { City } from '@prisma/client';
 
 export class EmailSubscriberEntity implements Entity<EmailSubscriberEntity, SubscriberInterface>, SubscriberInterface {
   public title: string;
@@ -16,7 +15,7 @@ export class EmailSubscriberEntity implements Entity<EmailSubscriberEntity, Subs
   public toObject(): EmailSubscriberEntity {
     return {
       ...this
-    }
+    };
 
   }
 }

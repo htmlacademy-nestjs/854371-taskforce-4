@@ -12,9 +12,9 @@ export class CreateCommentDto {
     maxLength: CommentValidationParameters.TEXT_MAX_LENGTH,
   })
   @IsString()
-  @IsNotEmpty({message: CommentValidationMessages.TEXT_EMPTY})
-  @MinLength(CommentValidationParameters.TEXT_MIN_LENGTH, {message: CommentValidationMessages.TEXT_MIN_LENGTH})
-  @MaxLength(CommentValidationParameters.TEXT_MAX_LENGTH, {message: CommentValidationMessages.TEXT_MAX_LENGTH})
+  @IsNotEmpty({ message: CommentValidationMessages.TEXT_EMPTY })
+  @MinLength(CommentValidationParameters.TEXT_MIN_LENGTH, { message: CommentValidationMessages.TEXT_MIN_LENGTH })
+  @MaxLength(CommentValidationParameters.TEXT_MAX_LENGTH, { message: CommentValidationMessages.TEXT_MAX_LENGTH })
   public message: string;
 
   @ApiProperty({

@@ -1,5 +1,4 @@
 import { UserRole } from './user-role.enum';
-import { Cities } from './cities.type';
 import { City } from '@prisma/client';
 
 export interface UserInterface {

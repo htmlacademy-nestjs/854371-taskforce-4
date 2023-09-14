@@ -13,4 +13,5 @@ import { EmailSubscriberModule } from './email-subscriber/email-subscriber.modul
   controllers: [],
   providers: [],
 })
-export class AppModule {}
+export class AppModule {
+}

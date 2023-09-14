@@ -6,5 +6,5 @@ export function createJwtPayload(user: UserInterface): TokenPayloadInterface {
     email: user.email,
     role: user.role,
     name: user.name
-  }
+  };
 }

@@ -77,10 +77,10 @@ export class AuthenticationService {
   }
 
   public async createUserToken(user: UserInterface) {
-    const payload: TokenPayloadInterface = createJwtPayload(user)
-    const refreshTokenPayload = { ...payload, tokenId: crypto.randomUUID() }
+    const payload: TokenPayloadInterface = createJwtPayload(user);
+    const refreshTokenPayload = { ...payload, tokenId: crypto.randomUUID() };
 
-    await this.refreshTokenService.createRefreshSession(refreshTokenPayload)
+    await this.refreshTokenService.createRefreshSession(refreshTokenPayload);
 
     return {
       accessToken: await this.jwtService.signAsync(payload),

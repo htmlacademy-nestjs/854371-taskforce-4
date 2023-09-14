@@ -8,7 +8,8 @@ import { UpdateTagDto } from './dto/update-tag.dto';
 export class TagService {
   constructor(
     private readonly tagRepository: TagRepository
-  ) {}
+  ) {
+  }
 
   async createTag(tag: CreateTagDto) {
     const newTag = new TagEntity(tag);

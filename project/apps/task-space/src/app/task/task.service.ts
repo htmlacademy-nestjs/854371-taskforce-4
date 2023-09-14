@@ -38,11 +38,11 @@ export class TaskService {
     sortedTasks = sortedTasks.map((task) => {
       const commentsAll = task.comments.length;
       const respondExecutorsAll = task.respondingExecutors.length;
-      console.log(commentsAll, respondExecutorsAll)
+      console.log(commentsAll, respondExecutorsAll);
       return { ...task, commentsAll, respondExecutorsAll };
     });
 
-    let result: TaskInterface[] = [...sortedTasks];
+    let result: TaskInterface[] = [ ...sortedTasks ];
 
     if (specialSortType) {
       if (specialSortType === SpecialSortType.COMMENTS_DESC) {

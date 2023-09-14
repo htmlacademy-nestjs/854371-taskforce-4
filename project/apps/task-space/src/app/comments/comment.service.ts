@@ -13,7 +13,9 @@ export class CommentService {
   constructor(
     private readonly commentRepository: CommentRepository,
     private readonly taskRepository: TaskRepository
-  ) {}
+  ) {
+  }
+
   public async createComment(comment: CreateCommentDto, userId: string): Promise<CommentInterface> {
     const entity = new CommentEntity({ ...comment, userId });
 

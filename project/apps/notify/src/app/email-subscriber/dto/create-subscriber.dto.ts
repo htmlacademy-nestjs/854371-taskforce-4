@@ -1,4 +1,3 @@
-import { City } from '@prisma/client';
 import { IsArray } from 'class-validator';
 
 export class CreateSubscriberDto {
@@ -7,5 +6,5 @@ export class CreateSubscriberDto {
 
   public date: Date;
 
-  public email: string
+  public email: string;
 }

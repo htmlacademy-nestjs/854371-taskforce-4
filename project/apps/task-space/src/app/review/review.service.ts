@@ -10,7 +10,8 @@ export class ReviewService {
   constructor(
     private readonly reviewRepository: ReviewRepository,
     private readonly taskRepository: TaskRepository
-  ) {}
+  ) {
+  }
 
   public async create(review: CreateReviewDto, executorId: string, taskSub: number): Promise<ReviewInterface> {
     const entity = new ReviewEntity({ ...review, executorId, taskSub });
@@ -23,13 +24,13 @@ export class ReviewService {
 
   public async calculateRating(executorId: string): Promise<number> {
     const reviews = await this.reviewRepository.findAllByExecutorId(executorId);
-    const getFailCounter = await this.taskRepository.getCountFailTaskByExecutorId(executorId)
+    const getFailCounter = await this.taskRepository.getCountFailTaskByExecutorId(executorId);
 
     const summary = reviews.reduce((acc, review) => acc + review.assessment, 0);
 
     const rating = summary / reviews.length + getFailCounter;
 
-    return parseFloat(rating.toString(2))
+    return parseFloat(rating.toString(2));
   }
 
   public async getReviewByTaskId(taskId: number): Promise<ReviewInterface> {

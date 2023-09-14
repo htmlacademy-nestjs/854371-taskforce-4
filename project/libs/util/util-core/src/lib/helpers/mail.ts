@@ -26,8 +26,8 @@ export function getMailerAsyncOptions(optionSpace: string): MailerAsyncOptions {
             strict: true
           }
         }
-      }
+      };
     },
-    inject: [ConfigService],
-  }
+    inject: [ ConfigService ],
+  };
 }

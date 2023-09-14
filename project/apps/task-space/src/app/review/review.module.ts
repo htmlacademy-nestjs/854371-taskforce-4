@@ -12,12 +12,13 @@ import { JwtAccessStrategy } from '@project/shared/authentication';
   imports: [
     TaskModule,
     JwtModule.registerAsync({
-      inject: [ConfigService],
+      inject: [ ConfigService ],
       useFactory: getSimpleJwtOptions
     }),
   ],
-  controllers: [ReviewController],
-  providers: [ReviewService, ReviewRepository, JwtAccessStrategy],
-  exports: [ReviewRepository]
+  controllers: [ ReviewController ],
+  providers: [ ReviewService, ReviewRepository, JwtAccessStrategy ],
+  exports: [ ReviewRepository ]
 })
-export class ReviewModule {}
+export class ReviewModule {
+}

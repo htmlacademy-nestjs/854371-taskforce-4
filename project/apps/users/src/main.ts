@@ -29,7 +29,7 @@ async function bootstrap() {
 
   app.useGlobalPipes(new ValidationPipe({
     transform: true
-  }))
+  }));
 
   const port = configService.get('application.port');
   await app.listen(port);
